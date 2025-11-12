@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unbreakable - Documentation</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 { color: #2c5f8d; }
+        h2 { color: #1e3a5f; margin-top: 30px; }
+        .badge { 
+            display: inline-block;
+            background: #27ae60; 
+            color: white; 
+            padding: 5px 10px; 
+            border-radius: 5px; 
+            font-size: 0.9rem;
+            margin-right: 10px;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        .feature {
+            background: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔒 Unbreakable Password Generator</h1>
+    <p>
+        <span class="badge">100% Offline</span>
+        <span class="badge">Zero Network Requests</span>
+        <span class="badge">Open Source</span>
+    </p>
+
+    <h2>About</h2>
+    <p>
+        Unbreakable is a browser extension that generates cryptographically secure passwords 
+        entirely on your device. Unlike online password generators, Unbreakable makes 
+        <strong>zero network requests</strong> - your passwords never leave your device.
+    </p>
+
+    <h2>How to Use</h2>
+    <ol>
+        <li>Click the 🔒 extension icon in your toolbar</li>
+        <li>Adjust password length and character types</li>
+        <li>Click "Generate Password"</li>
+        <li>Click "Copy" to copy to clipboard</li>
+        <li>Paste into your account</li>
+    </ol>
+
+    <h2>Keyboard Shortcut</h2>
+    <p>Press <code>Ctrl+Shift+P</code> (or <code>Cmd+Shift+P</code> on Mac) to open the generator quickly.</p>
+
+    <h2>Verify Privacy</h2>
+    <p>Don't trust us. Verify yourself:</p>
+    <ol>
+        <li>Open the extension popup</li>
+        <li>Press <code>F12</code> to open Developer Tools</li>
+        <li>Go to the <strong>Network</strong> tab</li>
+        <li>Generate 10, 50, or 100 passwords</li>
+        <li>See <strong>ZERO network requests</strong></li>
+    </ol>
+    <p>That's proof. Your passwords never leave your device.</p>
+
+    <h2>Features</h2>
+    <div class="feature">
+        <strong>🔐 Cryptographically Secure</strong><br>
+        Uses Web Crypto API (crypto.getRandomValues) for true randomness.
+    </div>
+    <div class="feature">
+        <strong>🔒 100% Offline</strong><br>
+        No internet connection required. Network APIs are actively blocked.
+    </div>
+    <div class="feature">
+        <strong>🚫 No Data Collection</strong><br>
+        Zero logging, zero tracking, zero storage.
+    </div>
+    <div class="feature">
+        <strong>📊 Entropy Display</strong><br>
+        Shows password strength and estimated time to crack.
+    </div>
+    <div class="feature">
+        <strong>✅ Trust Badge</strong><br>
+        Real-time network monitoring to verify zero requests.
+    </div>
+
+    <h2>Security</h2>
+    <p>This extension requests minimal permissions:</p>
+    <ul>
+        <li><strong>clipboardWrite</strong> - To copy passwords to clipboard</li>
+    </ul>
+    <p>That's it. No access to your tabs, browsing history, or websites.</p>
+
+    <h2>Privacy Promise</h2>
+    <p>
+        ✅ No servers - we don't have any<br>
+        ✅ No logging - we can't log what we don't see<br>
+        ✅ No analytics - we don't track usage<br>
+        ✅ No cookies - we don't store anything<br>
+        ✅ No network requests - provably offline<br>
+        ✅ No data collection - we don't know you exist
+    </p>
+
+    <h2>Open Source</h2>
+    <p>
+        Full source code available on GitHub:<br>
+        <a href="https://github.com/jbryan79/Unbreakable-Extension" target="_blank">
+            github.com/jbryan79/Unbreakable-Extension
+        </a>
+    </p>
+
+    <h2>Support</h2>
+    <p>
+        Found a bug? Have a suggestion?<br>
+        📧 Email: jamesbryan@gmail.com<br>
+        🐙 GitHub Issues: <a href="https://github.com/jbryan79/Unbreakable-Extension/issues" target="_blank">Report Issue</a>
+    </p>
+
+    <hr style="margin: 40px 0; border: none; border-top: 1px solid #ddd;">
+    
+    <p style="text-align: center; color: #666; font-size: 0.9rem;">
+        <strong>🔒 Your passwords. Your device. Nobody else.</strong><br>
+        Built with privacy in mind. Always.<br>
+        © 2025 James Bryan • MIT License
+    </p>
+</body>
+</html>
