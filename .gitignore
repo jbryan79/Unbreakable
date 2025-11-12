@@ -1,0 +1,60 @@
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Inno Setup
+Output/
+*.iss.bak
+
+# Backup files
+*.bak
+*.backup
+*-backup/
+*-old/
+v2.0-backup/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Build artifacts
+dist/
+build/
+*.exe
+*.msi
+*.zip
+
+# Node modules (if you ever add them)
+node_modules/
+
+# Environment variables
+.env
+.env.local
+
+# Test files
+test/
+tests/
+*.test.js
+*.spec.js
