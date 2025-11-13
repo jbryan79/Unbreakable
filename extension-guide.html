@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome Extension Loading Guide - Unbreakable</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c5f8d;
+            --primary-dark: #1e3a5f;
+            --accent: #4a9eff;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+            --light-gray: #ecf0f1;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light-gray);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+        }
+
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .notice {
+            background: #fff3cd;
+            border-left: 5px solid var(--warning);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+
+        .notice h3 {
+            color: var(--warning);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .notice p {
+            color: #856404;
+            line-height: 1.8;
+        }
+
+        .steps {
+            margin: 40px 0;
+        }
+
+        .step {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: var(--light-gray);
+            border-radius: 15px;
+            border-left: 5px solid var(--accent);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: var(--white);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .step h3 {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .step p {
+            color: var(--dark);
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .step code {
+            background: var(--white);
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            color: var(--danger);
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        .step .path {
+            background: var(--white);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            color: var(--success);
+            margin: 15px 0;
+            border: 2px dashed var(--success);
+            word-break: break-all;
+        }
+
+        .screenshot-placeholder {
+            background: #fff;
+            border: 3px dashed var(--gray);
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            color: var(--gray);
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .success-box {
+            background: #d4edda;
+            border-left: 5px solid var(--success);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+
+        .success-box h3 {
+            color: var(--success);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .success-box p {
+            color: #155724;
+            line-height: 1.8;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: var(--white);
+        }
+
+        .btn-success:hover {
+            background: #229954;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .privacy-promise {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .privacy-promise h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .privacy-promise ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .privacy-promise li {
+            padding: 8px 0;
+            font-size: 1.1rem;
+        }
+
+        .faq {
+            margin-top: 50px;
+        }
+
+        .faq h2 {
+            color: var(--primary-dark);
+            margin-bottom: 30px;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--light-gray);
+            border-radius: 10px;
+        }
+
+        .faq-item h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .faq-item p {
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .step {
+                padding: 15px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="icon">🔒</div>
+            <h1>Install Chrome Extension</h1>
+            <p class="subtitle">Unbreakable Password Generator</p>
+        </div>
+
+        <div class="notice">
+            <h3>⚠️ Important: Chrome Security Policy</h3>
+            <p>
+                <strong>Chrome does NOT allow automatic installation of extensions from outside the Chrome Web Store.</strong>
+                This is a security feature by Google, not a limitation of Unbreakable.
+            </p>
+            <p style="margin-top: 10px;">
+                The good news: You can still install the extension manually in just 4 easy steps (takes about 30 seconds). 
+                The extension will work exactly the same way and maintain the same privacy guarantees.
+            </p>
+        </div>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Open Chrome Extensions Page</h3>
+                <p>Open Google Chrome and navigate to the extensions page using one of these methods:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li style="margin: 5px 0;">• Type <code>chrome://extensions/</code> in the address bar</li>
+                    <li style="margin: 5px 0;">• Or click: Menu (⋮) → Extensions → Manage Extensions</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Enable Developer Mode</h3>
+                <p>At the top-right corner of the Extensions page, you'll see a toggle switch labeled <strong>"Developer mode"</strong>.</p>
+                <p><strong>Click the toggle to turn it ON.</strong></p>
+                <p style="margin-top: 15px; color: var(--gray); font-size: 0.95rem;">
+                    <em>Note: This is safe and only allows you to load extensions from your local files. It doesn't make your browser less secure.</em>
+                </p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Load Unpacked Extension</h3>
+                <p>After enabling Developer mode, you'll see three new buttons appear. Click the <strong>"Load unpacked"</strong> button.</p>
+                <p style="margin-top: 15px;">A file browser window will open. Navigate to your Unbreakable installation folder:</p>
+                <div class="path">C:\Program Files\Unbreakable\ChromeExtension\</div>
+                <p><strong>Select the "ChromeExtension" folder and click "Select Folder"</strong></p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Verify Installation</h3>
+                <p>The Unbreakable extension should now appear in your list of installed extensions!</p>
+                <p style="margin-top: 15px;">You should see:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li style="margin: 5px 0;">✓ Unbreakable Password Generator extension card</li>
+                    <li style="margin: 5px 0;">✓ A toggle switch (make sure it's ON/blue)</li>
+                    <li style="margin: 5px 0;">✓ The Unbreakable icon in your Chrome toolbar</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="success-box">
+            <h3>✅ Installation Complete!</h3>
+            <p>
+                You can now click the Unbreakable icon in your Chrome toolbar to generate secure passwords instantly.
+                The extension makes ZERO network requests and works 100% offline, just like the web version.
+            </p>
+            <p style="margin-top: 10px;">
+                <strong>Want to verify?</strong> Press F12, go to the Network tab, and generate passwords. You'll see zero requests.
+            </p>
+        </div>
+
+        <div class="buttons">
+            <a href="chrome://extensions/" class="btn btn-primary">
+                🔧 Open Chrome Extensions
+            </a>
+            <a href="index.html" class="btn btn-success">
+                🔒 Launch Web App
+            </a>
+        </div>
+
+        <div class="faq">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h4>Q: Will this extension always work, or will Chrome remove it?</h4>
+                <p>
+                    <strong>A:</strong> The extension will continue to work indefinitely as long as you keep Developer Mode enabled. 
+                    Chrome will NOT automatically remove it. You may see a notification about "Developer mode extensions" 
+                    when Chrome starts—this is normal. Just dismiss it.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Q: Is it safe to enable Developer Mode?</h4>
+                <p>
+                    <strong>A:</strong> Yes, it's completely safe. Developer Mode simply allows you to install extensions from local files 
+                    instead of only from the Chrome Web Store. It doesn't reduce your browser's security. Just don't install 
+                    extensions from sources you don't trust.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Q: Can you publish this to the Chrome Web Store so I don't have to do this?</h4>
+                <p>
+                    <strong>A:</strong> Yes! Publishing to the Chrome Web Store is on the roadmap for future versions. For now, 
+                    this manual installation method ensures you can start using Unbreakable immediately while maintaining 
+                    the same privacy guarantees.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Q: Does the extension still make zero network requests?</h4>
+                <p>
+                    <strong>A:</strong> Absolutely! The extension has the exact same privacy guarantees as the web app. 
+                    It runs 100% on your device and makes ZERO network requests. You can verify this yourself using 
+                    Chrome's DevTools Network tab.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Q: What if I see a warning about the extension?</h4>
+                <p>
+                    <strong>A:</strong> Chrome may show a warning banner about "extensions running in developer mode" when 
+                    you start your browser. This is normal and safe to dismiss. The warning appears for ALL locally 
+                    installed extensions, not because there's anything wrong with Unbreakable.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Q: Can I use both the extension and the web app?</h4>
+                <p>
+                    <strong>A:</strong> Yes! Use whichever is more convenient at the moment:
+                    <br>• <strong>Extension:</strong> Quick access from any webpage
+                    <br>• <strong>Web App:</strong> Full-screen interface with more options
+                    <br>Both are completely offline and maintain the same security standards.
+                </p>
+            </div>
+        </div>
+
+        <div class="privacy-promise">
+            <h3>🔒 Privacy Promise</h3>
+            <ul>
+                <li>✓ No servers - we don't have any</li>
+                <li>✓ No logging - nothing is saved</li>
+                <li>✓ No network requests - provably offline</li>
+                <li>✓ No data collection - we don't know you exist</li>
+            </ul>
+            <p style="margin-top: 20px; font-size: 1.2rem; font-weight: 600;">
+                Your passwords never leave your device. Period.
+            </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 2px solid var(--light-gray);">
+            <p style="color: var(--gray);">
+                <strong>Need Help?</strong><br>
+                GitHub: <a href="https://github.com/jbryan79/Unbreakable" style="color: var(--accent);">github.com/jbryan79/Unbreakable</a><br>
+                Email: <a href="mailto:jamesbryan@gmail.com" style="color: var(--accent);">jamesbryan@gmail.com</a>
+            </p>
+            <p style="color: var(--gray); margin-top: 20px;">
+                &copy; 2025 James Bryan | MIT License | Built with privacy in mind
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Make the chrome://extensions/ link work by handling it specially
+        document.querySelectorAll('a[href^="chrome://"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Copy the URL to clipboard as a fallback
+                const url = link.getAttribute('href');
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('Chrome extension URL copied to clipboard!\n\nPaste it into your Chrome address bar:\n' + url);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
