@@ -3,55 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Unbreakable Password Generator - 100% offline, cryptographically secure password generation. No servers. No logging. No trust required.">
-    <meta name="keywords" content="password generator, offline, secure, privacy, cryptographic, no tracking">
-    <meta name="google-site-verification" content="AG2SWtpCdLrjhpopKOAXoKJbRAvsspql8ZZSxlWxvEw" />
-    <title>Unbreakable Password Generator - Your Passwords. Your Device. Nobody Else.</title>
+    <meta name="description" content="Healthcare IT Database Analyst with 15+ years specializing in EZ-CAP systems, SQL Server, and claims data integration. Available for remote database analyst roles with California healthcare organizations.">
+    <meta name="keywords" content="Database Analyst, SQL Developer, Healthcare IT, EZ-CAP, SQL Server, T-SQL, SSRS, ETL, Claims Systems, California">
+    <meta name="author" content="James Bryan">
     
-    <!-- No external dependencies - everything is self-contained -->
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://jamesabryan.com">
+    <meta property="og:title" content="James Bryan – Database Analyst & SQL Developer | Healthcare IT">
+    <meta property="og:description" content="15+ years healthcare IT experience specializing in EZ-CAP, SQL Server, claims systems. Available for remote database analyst roles.">
+    <meta property="og:image" content="https://jamesabryan.com/images/og-preview.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://jamesabryan.com">
+    <meta name="twitter:title" content="James Bryan – Database Analyst & SQL Developer | Healthcare IT">
+    <meta name="twitter:description" content="15+ years healthcare IT experience specializing in EZ-CAP, SQL Server, claims systems. Available for remote database analyst roles.">
+    <meta property="twitter:image" content="https://jamesabryan.com/images/og-preview.jpg">
+    
+    <!-- JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "James Bryan",
+      "jobTitle": "Database Analyst & SQL Developer",
+      "url": "https://jamesabryan.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/janthonyb",
+        "https://github.com/jbryan79"
+      ],
+      "description": "Healthcare IT Database Analyst with 15+ years specializing in EZ-CAP systems, SQL Server, and claims data integration. Experienced in database-driven application development and modern data delivery. Available for remote roles with California healthcare organizations.",
+      "knowsAbout": [
+        "SQL Server",
+        "T-SQL",
+        "EZ-CAP",
+        "Healthcare IT",
+        "Database Administration",
+        "ETL",
+        "SSRS",
+        "Claims Systems",
+        "Healthcare Data Integration",
+        "Database Optimization",
+        "Database-Driven Applications",
+        "API Integration"
+      ],
+      "seeks": {
+        "@type": "JobPosting",
+        "title": "Database Analyst",
+        "jobLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "CA"
+          }
+        }
+      }
+    }
+    </script>
+    
+    <title>James Bryan – Database Analyst & SQL Developer | Healthcare IT</title>
+    
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* =========================================
+   MOBILE NAVIGATION ENHANCEMENT - CSS
+   Add this to your existing stylesheet
+   ========================================= */
+
+/* ===== FLOATING ACTION BUTTON (Jump to Experience) ===== */
+.jump-to-experience {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--white);
+    color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
+    border-radius: 30px;
+    padding: 14px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0 2px 10px rgba(44, 95, 141, 0.15);
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.jump-to-experience:hover {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(44, 95, 141, 0.3);
+}
+
+.jump-to-experience:active {
+    transform: translateY(0);
+}
+
+/* Hide button when user reaches experience section */
+.jump-to-experience.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Icon for the button - using FontAwesome instead */
+.jump-to-experience i {
+    font-size: 16px;
+}
+
+/* ===== STICKY NAVIGATION ===== */
+.sticky-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    padding: 12px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.sticky-nav.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.sticky-nav-container {
+    max-width: 1200px; /* TODO: Match your site's max-width */
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sticky-nav-logo {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.sticky-nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sticky-nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+    transition: color 0.2s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.sticky-nav-links a:hover {
+    color: var(--primary-blue);
+}
+
+/* Mobile hamburger menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.hamburger span {
+    width: 24px;
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .sticky-nav-links {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        gap: 0;
+        padding: 16px 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transform: translateY(-120%);
+        transition: transform 0.3s ease;
+    }
+
+    .sticky-nav-links.active {
+        transform: translateY(0);
+    }
+
+    .sticky-nav-links a {
+        padding: 16px 24px;
+        display: block;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .sticky-nav-links a:last-child {
+        border-bottom: none;
+    }
+
+    /* Adjust jump button for mobile */
+    .jump-to-experience {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+
         }
 
         :root {
-            --primary: #2c5f8d;
-            --primary-dark: #1e3a5f;
-            --accent: #4a9eff;
-            --success: #27ae60;
-            --danger: #e74c3c;
-            --warning: #f39c12;
-            --dark: #2c3e50;
-            --gray: #7f8c8d;
-            --light-gray: #ecf0f1;
+            --primary-blue: #2c5f8d;
+            --dark-blue: #1e3a5f;
+            --light-blue: #4a9eff;
+            --accent-blue: #00d4ff;
+            --gray-dark: #333;
+            --gray-medium: #666;
+            --gray-light: #f5f7fa;
             --white: #ffffff;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: var(--dark);
-            background: var(--light-gray);
+            color: var(--gray-dark);
+            background-color: var(--gray-light);
         }
 
-        /* Reduced motion support */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
 
-        /* Hero Section */
+        /* Header / Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 50%, var(--dark-blue) 100%);
             color: var(--white);
-            padding: 40px 20px 30px;
+            padding: 80px 20px 60px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -64,7 +294,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.03) 35px, rgba(255,255,255,.03) 70px);
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.03) 35px, rgba(255,255,255,.03) 70px);
             pointer-events: none;
         }
 
@@ -75,60 +306,110 @@
             z-index: 1;
         }
 
-        .hero-icon {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            animation: pulse 2s ease-in-out infinite;
+        .hero-logo {
+            margin: 0 auto 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .hero h1 {
-            font-size: 2rem;
+        .logo-name {
+            font-size: 3.5rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            color: var(--white);
             letter-spacing: -1px;
+            line-height: 1;
+            margin: 0 0 12px 0;
+            padding: 0;
+            position: relative;
+            display: inline-block;
         }
 
-        .hero .tagline {
-            font-size: 1.3rem;
-            font-weight: 400;
-            margin-bottom: 15px;
-            opacity: 0.98;
+        .logo-name::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.8) 0%, transparent 100%);
+        }
+
+        .logo-tagline {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin: 0;
+            padding: 0;
         }
 
         .hero .subtitle {
-            font-size: 1rem;
-            opacity: 0.92;
+            font-size: 1.5rem;
+            font-weight: 300;
             margin-bottom: 20px;
-            line-height: 1.7;
+            opacity: 0.95;
         }
 
-        .trust-badges {
+        .hero .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
             display: flex;
-            justify-content: center;
             gap: 15px;
+            justify-content: center;
             flex-wrap: wrap;
-            margin-top: 15px;
+            margin-top: 30px;
         }
 
-        .trust-badge {
-            display: flex;
+        .btn {
+            display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 255, 255, 0.15);
-            padding: 8px 16px;
+            padding: 12px 28px;
             border-radius: 30px;
-            backdrop-filter: blur(10px);
-            font-size: 0.85rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
 
-        .trust-badge i {
-            color: var(--success);
-            font-size: 1.3rem;
+        .btn-primary {
+            background: transparent !important;
+            color: var(--white) !important;
+            border-color: var(--white) !important;
+        }
+
+        .btn-primary:hover {
+            background: var(--white) !important;
+            color: var(--primary-blue) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:focus,
+        .btn-primary:active,
+        .btn-primary:visited {
+            background: transparent !important;
+            color: var(--white) !important;
+            border-color: var(--white) !important;
+            outline: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary-blue);
+            transform: translateY(-2px);
         }
 
         /* Container */
@@ -138,619 +419,710 @@
             padding: 0 20px;
         }
 
-        /* Generator Section */
-        .generator-section {
+        /* Sections */
+        section {
+            padding: 60px 20px;
             background: var(--white);
-            padding: 30px 20px;
-            margin: -30px auto 0;
-            max-width: 800px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 10;
+            margin-bottom: 2px;
         }
 
-        .generator-header {
+        section:nth-child(even) {
+            background: var(--gray-light);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 40px;
             text-align: center;
-            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
         }
 
-        .generator-header h2 {
-            color: var(--primary-dark);
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--light-blue), var(--accent-blue));
+            border-radius: 2px;
+        }
+
+        /* Summary Section */
+        .summary-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: center;
+            color: var(--gray-medium);
+        }
+
+        .summary-highlight {
+            background: var(--gray-light);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .summary-highlight strong {
+            color: var(--dark-blue);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .skill-category {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:nth-child(even) .skill-category {
+            background: var(--white);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-category i {
             font-size: 1.5rem;
+            color: var(--light-blue);
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 8px 0;
+            color: var(--gray-medium);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .skill-category li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--light-blue);
+            font-weight: bold;
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .job {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+
+        section:nth-child(even) .job {
+            background: var(--white);
+        }
+
+        .job:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+            transform: translateX(5px);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .job-title {
+            font-size: 1.5rem;
+            color: var(--dark-blue);
+            font-weight: 700;
+        }
+
+        .job-date {
+            color: var(--gray-medium);
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        .job-company {
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            font-weight: 600;
             margin-bottom: 5px;
         }
 
-        .generator-header p {
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-
-        .password-display {
-            background: var(--light-gray);
-            padding: 15px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            border: 2px solid var(--accent);
-            position: relative;
-        }
-
-        .password-output {
-            font-family: 'Courier New', monospace;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-            word-break: break-all;
-            text-align: center;
-            min-height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            letter-spacing: 1px;
-        }
-
-        .password-output.empty {
-            color: var(--gray);
-            font-style: italic;
-            font-size: 1rem;
-        }
-
-        .entropy-display {
-            text-align: center;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid #ddd;
-            font-size: 0.85rem;
-            color: var(--gray);
-        }
-
-        .entropy-display strong {
-            color: var(--success);
-            font-size: 1rem;
-        }
-
-        .controls {
-            display: grid;
-            gap: 12px;
+        .job-location {
+            color: var(--gray-medium);
+            font-size: 0.9rem;
             margin-bottom: 15px;
         }
 
-        .control-group {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background: var(--light-gray);
-            border-radius: 10px;
+        .job ul {
+            list-style: none;
+            margin-top: 15px;
         }
 
-        .control-group label {
-            font-weight: 600;
-            color: var(--dark);
-            font-size: 0.9rem;
+        .job li {
+            padding: 8px 0;
+            color: var(--gray-medium);
+            position: relative;
+            padding-left: 25px;
+            line-height: 1.6;
         }
 
-        .control-group input[type="range"] {
-            width: 200px;
-            flex: 1;
-            margin: 0 15px;
+        .job li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--light-blue);
+            font-weight: bold;
         }
 
-        .control-group input[type="number"] {
-            width: 60px;
-            padding: 6px;
-            border: 2px solid var(--accent);
-            border-radius: 8px;
+        /* Contact Form Section */
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-intro {
             text-align: center;
-            font-size: 0.95rem;
+            margin-bottom: 40px;
+            color: var(--gray-medium);
+            font-size: 1.1rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--dark-blue);
             font-weight: 600;
-        }
-
-        .checkbox-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 10px;
-            margin-bottom: 20px;
-            transition: border 0.3s ease;
-            padding: 5px;
-            border-radius: 10px;
-        }
-
-        .checkbox-group.error {
-            border: 2px solid var(--danger);
-            background: rgba(231, 76, 60, 0.05);
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px;
-            background: var(--light-gray);
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .checkbox-item:hover {
-            background: #dfe6e9;
-        }
-
-        .checkbox-item input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-
-        .checkbox-item label {
-            cursor: pointer;
-            font-weight: 500;
             font-size: 0.9rem;
         }
 
-        .action-buttons {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
         }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 28px;
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--light-blue);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-submit {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 30px;
             border: none;
             border-radius: 30px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
-
-        .btn-success {
-            background: var(--success);
-            color: var(--white);
-        }
-
-        .btn-success:hover {
-            background: #229954;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        /* Copy Notification */
-        .copy-notification {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: var(--success);
-            color: var(--white);
-            padding: 15px 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            display: none;
-            animation: slideInLeft 0.3s ease;
-            z-index: 1000;
-        }
-
-        .copy-notification.show {
             display: block;
+            width: 100%;
+            margin-top: 10px;
         }
 
-        @keyframes slideInLeft {
-            from {
-                transform: translateX(-400px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
+        .form-submit:hover {
+            background: var(--light-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        /* Privacy Proof Section */
-        .privacy-proof {
-            background: var(--primary-dark);
-            color: #ffffff;
-            padding: 40px 20px;
+        .contact-info {
             text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
         }
 
-        .privacy-proof h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: #ffffff;
-            font-weight: 700;
-        }
-
-        .privacy-proof p {
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            opacity: 1;
-            line-height: 1.6;
-            color: #ffffff;
-        }
-
-        .proof-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .proof-step {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 25px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .proof-step-number {
-            display: inline-block;
-            width: 45px;
-            height: 45px;
-            background: var(--accent);
-            border-radius: 50%;
-            line-height: 45px;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #ffffff;
-        }
-
-        .proof-step h3 {
-            font-size: 1.2rem;
+        .contact-info p {
+            color: var(--gray-medium);
             margin-bottom: 10px;
-            font-weight: 600;
-            color: var(--primary-dark);
+            font-size: 0.9rem;
         }
 
-        .proof-step p {
-            font-size: 1rem;
-            opacity: 1;
-            line-height: 1.5;
-            color: var(--dark);
-            margin: 0;
-        }
-
-        .network-status {
-            display: inline-block;
-            background: rgba(39, 174, 96, 0.25);
-            color: #ffffff;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-weight: 600;
-            margin-top: 25px;
-            border: 2px solid #27ae60;
-            font-size: 1.05rem;
-        }
-
-        .network-status i {
-            margin-right: 8px;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 80px 20px;
-            background: var(--white);
-        }
-
-        .features h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary-dark);
-            margin-bottom: 50px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            text-align: center;
-            padding: 30px;
-            border-radius: 15px;
-            background: var(--light-gray);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            color: var(--primary-dark);
-            margin-bottom: 15px;
-        }
-
-        .feature-card p {
-            color: var(--gray);
-            line-height: 1.8;
-        }
-
-        /* About Developer Section */
-        .about-developer {
-            background: var(--light-gray);
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .about-developer h2 {
-            font-size: 2rem;
-            color: var(--primary-dark);
-            margin-bottom: 20px;
-        }
-
-        .about-developer p {
-            max-width: 800px;
-            margin: 0 auto 30px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--dark);
-        }
-
-        .about-highlights {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        .about-highlight {
-            background: var(--white);
-            padding: 15px 25px;
-            border-radius: 10px;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .about-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        /* Download Section */
-        .download-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            color: var(--white);
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .download-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .download-section p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            opacity: 0.95;
-        }
-
-        .download-options {
+        .contact-links {
             display: flex;
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+            margin-top: 10px;
         }
 
-        .download-btn {
-            display: inline-flex;
+        .contact-link {
+            display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 18px 40px;
-            background: var(--white);
-            color: var(--primary);
-            border-radius: 30px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            gap: 8px;
+            color: var(--primary-blue);
             text-decoration: none;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
         }
 
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .download-btn i {
-            font-size: 1.5rem;
+        .contact-link:hover {
+            color: var(--light-blue);
         }
 
         /* Footer */
+        /* Footer - Business Card Style */
         footer {
-            background: var(--primary-dark);
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
             color: var(--white);
             padding: 40px 20px;
-            text-align: center;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
         }
 
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
+        .footer-card {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-links {
+        .footer-left {
             display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            gap: 30px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
+            padding-right: 40px;
+            border-right: 2px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Trust Badge Component Styles */
-        .trust-badge-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-        }
-
-        .trust-badge-fixed {
-            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+        .footer-right {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: pulse-badge 2s ease-in-out infinite;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        .trust-badge-fixed:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.5);
-        }
-
-        @keyframes pulse-badge {
-            0%, 100% {
-                box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
-            }
-            50% {
-                box-shadow: 0 4px 25px rgba(39, 174, 96, 0.6);
-            }
-        }
-
-        .trust-badge-icon {
-            font-size: 1.2rem;
-            animation: rotate-shield 3s linear infinite;
-        }
-
-        @keyframes rotate-shield {
-            0%, 90% {
-                transform: rotate(0deg);
-            }
-            95% {
-                transform: rotate(-10deg);
-            }
-            100% {
-                transform: rotate(0deg);
-            }
-        }
-
-        .network-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .network-dot {
-            width: 8px;
-            height: 8px;
-            background: #fff;
-            border-radius: 50%;
-            animation: blink 1.5s ease-in-out infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.3;
-            }
-        }
-
-        .request-counter {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.75rem;
+        .footer-name {
+            font-size: 2rem;
             font-weight: 700;
+            margin-bottom: 5px;
+            color: white;
         }
 
-        /* Trust Modal */
-        .trust-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            z-index: 10000;
-            animation: fadeIn 0.3s ease;
+        .footer-title {
+            font-size: 1.1rem;
+            font-weight: 400;
+            opacity: 0.95;
+            margin-bottom: 15px;
         }
 
-        .trust-modal.active {
+        .footer-contact-item {
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 12px;
+            font-size: 1rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+        }
+
+        .footer-contact-item:hover {
+            transform: translateX(5px);
+            color: var(--accent-blue);
+        }
+
+        .footer-contact-item i {
+            width: 24px;
+            font-size: 1.2rem;
+            color: var(--accent-blue);
+        }
+
+        .footer-copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-card {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 30px 20px;
+            }
+
+            .footer-left {
+                border-right: none;
+                border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+                padding-right: 0;
+                padding-bottom: 30px;
+            }
+
+            .footer-name {
+                font-size: 1.5rem;
+            }
+
+            .footer-title {
+                font-size: 1rem;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo-name {
+                font-size: 2.5rem;
+            }
+
+            .logo-tagline {
+                font-size: 0.9rem;
+                letter-spacing: 1px;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .job-header {
+                flex-direction: column;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 25px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(44, 95, 141, 0.4);
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(44, 95, 141, 0.6);
+            background: linear-gradient(135deg, var(--light-blue), var(--accent-blue));
+        }
+
+        @media (max-width: 768px) {
+            .back-to-top {
+                bottom: 20px;
+                left: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
             }
         }
 
-        .trust-modal-content {
+        /* LinkedIn Badge Custom Styling - Override default colors */
+        .badge-base {
+            border-radius: 8px !important;
+            overflow: hidden !important;
+        }
+
+        /* Style the LinkedIn badge container to match site theme */
+        .footer-left .LI-profile-badge {
+            background: transparent !important;
+        }
+
+        /* Override the embedded iframe styling */
+        .footer-left iframe {
+            border-radius: 8px !important;
+            filter: hue-rotate(190deg) saturate(0.9) brightness(1.1);
+        }
+
+        /* Custom LinkedIn Card */
+        .custom-linkedin-card {
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            max-width: 450px;
+        }
+
+        .linkedin-card-header {
+            background: var(--dark-blue);
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .linkedin-card-header i {
+            font-size: 1.1rem;
+        }
+
+        .linkedin-card-body {
+            background: var(--primary-blue);
+            padding: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .linkedin-profile-pic {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            border: 2px solid white;
+            flex-shrink: 0;
+        }
+
+        .linkedin-card-info {
+            flex: 1;
+            color: white;
+        }
+
+        .linkedin-card-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: white;
+        }
+
+        .linkedin-card-title {
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .linkedin-card-school {
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .linkedin-view-profile {
+            display: inline-block;
+            padding: 6px 16px;
             background: white;
+            color: var(--primary-blue);
+            text-decoration: none;
             border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .linkedin-view-profile:hover {
+            background: var(--gray-light);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Contact Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            margin: auto;
             padding: 0;
+            border-radius: 15px;
             max-width: 600px;
             width: 90%;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             animation: slideUp 0.3s ease;
             position: relative;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px 15px 0 0;
+            position: relative;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .modal-header p {
+            margin-top: 5px;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover,
+        .close:focus {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 20px 30px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @keyframes slideUp {
@@ -764,573 +1136,738 @@
             }
         }
 
-        .trust-modal-header {
-            background: linear-gradient(135deg, #1e3a5f 0%, #2c5f8d 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 20px 20px 0 0;
-            position: relative;
-        }
-
-        .trust-modal-header h2 {
-            margin: 0 0 10px 0;
-            font-size: 1.8rem;
-        }
-
-        .trust-modal-header p {
-            margin: 0;
-            opacity: 0.9;
-            font-size: 1rem;
-        }
-
-        .trust-modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .trust-modal-close:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: rotate(90deg);
-        }
-
-        .trust-modal-body {
-            padding: 30px;
-        }
-
-        .trust-section {
-            margin-bottom: 30px;
-        }
-
-        .trust-section h3 {
-            color: #1e3a5f;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .trust-section p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-
-        .trust-section ul {
-            color: #666;
-            line-height: 1.8;
-            padding-left: 25px;
-        }
-
-        .modal-proof-steps {
-            background: #f5f7fa;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #4a9eff;
-        }
-
-        .modal-proof-step {
-            margin-bottom: 15px;
-            padding-left: 0;
-            position: relative;
-        }
-
-        .modal-proof-step strong {
-            color: #1e3a5f;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .trust-indicators {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .trust-indicator {
-            background: #f5f7fa;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .trust-indicator-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .trust-indicator-title {
-            font-weight: 600;
-            color: #1e3a5f;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-
-        .trust-indicator-desc {
-            font-size: 0.8rem;
-            color: #666;
-        }
-
-        .network-monitor {
-            background: #27ae60;
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .network-monitor-count {
-            font-size: 2rem;
-            font-weight: 700;
-            margin: 10px 0;
-        }
-
-        .network-explanation {
-            font-size: 0.85rem;
-            opacity: 0.95;
-            margin-top: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px;
-            border-radius: 5px;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .trust-badge-container {
-                bottom: 10px;
-                right: 10px;
-            }
-
-            .trust-badge-fixed {
-                padding: 10px 15px;
-                font-size: 0.8rem;
-            }
-
-            .trust-modal-content {
+            .modal-content {
                 width: 95%;
+                max-height: 95vh;
             }
 
-            .trust-modal-header {
+            .modal-header {
                 padding: 20px;
             }
 
-            .trust-modal-body {
+            .modal-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .modal-body {
                 padding: 20px;
             }
-
-            .trust-indicators {
-                grid-template-columns: 1fr;
-            }
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero .tagline {
-                font-size: 1.1rem;
-            }
-
-            .password-output {
-                font-size: 1.2rem;
-            }
-
-            .control-group {
-                flex-direction: column;
-                gap: 10px;
-                align-items: stretch;
-            }
-
-            .control-group input[type="range"] {
-                width: 100%;
-                margin: 10px 0;
-            }
-
-            .action-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .trust-badges {
-                flex-direction: column;
-                gap: 10px;
-            }
         }
 
-        /* Utility icon replacement for Font Awesome */
-        .icon {
-            display: inline-block;
-            width: 1em;
-            height: 1em;
-            text-align: center;
-        }
-
-        /* Screen reader only class */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
     </style>
+
 </head>
 <body>
-    <!-- Trust Badge Component -->
-    <div class="trust-badge-container">
-        <div class="trust-badge-fixed" id="trustBadgeFixed" role="button" aria-label="Open privacy verification details" tabindex="0">
-            <span class="trust-badge-icon" aria-hidden="true">🔒</span>
-            <div class="network-indicator">
-                <span class="network-dot" aria-hidden="true"></span>
-                <span>OFFLINE</span>
-            </div>
-            <span class="request-counter" id="requestCounterFixed" aria-live="polite">0 Requests</span>
-        </div>
+    <nav class="sticky-nav hidden" id="stickyNav">
+    <div class="sticky-nav-container">
+        <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="sticky-nav-logo">JAB</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="sticky-nav-links" id="navLinks">
+            <li><a href="#summary">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
     </div>
-
-    <!-- Trust Modal -->
-    <div class="trust-modal" id="trustModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <div class="trust-modal-content">
-            <div class="trust-modal-header">
-                <h2 id="modalTitle">🔒 Privacy Verified</h2>
-                <p>Your passwords never leave your device</p>
-                <button class="trust-modal-close" id="closeModal" aria-label="Close modal">×</button>
-            </div>
-            <div class="trust-modal-body">
-                
-                <!-- Network Monitor -->
-                <div class="network-monitor">
-                    <div>Network Requests Detected</div>
-                    <div class="network-monitor-count" id="modalRequestCounter" aria-live="polite">0</div>
-                    <div style="font-size: 0.9rem; opacity: 0.9;">After the initial page load, this app makes zero additional requests</div>
-                    <div class="network-explanation">
-                        Note: The count above excludes the initial page load (index.html). All password generation happens locally with no network activity.
-                    </div>
-                </div>
-
-                <!-- Proof Section -->
-                <div class="trust-section">
-                    <h3>🔍 Verify Privacy Yourself</h3>
-                    <p>Don't take our word for it. Here's how to verify that Unbreakable makes zero network requests:</p>
-                    
-                    <div class="modal-proof-steps">
-                        <div class="modal-proof-step">
-                            <strong>Open Developer Tools</strong>
-                            <span>Press F12 (or Cmd+Option+I on Mac) to open browser dev tools</span>
-                        </div>
-                        <div class="modal-proof-step">
-                            <strong>Go to Network Tab</strong>
-                            <span>Click on the "Network" tab in developer tools</span>
-                        </div>
-                        <div class="modal-proof-step">
-                            <strong>Generate Passwords</strong>
-                            <span>Generate 10, 50, or 100 passwords using the tool</span>
-                        </div>
-                        <div class="modal-proof-step">
-                            <strong>See Zero Requests</strong>
-                            <span>Verify there are ZERO network requests after page load</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Trust Indicators -->
-                <div class="trust-section">
-                    <h3>✓ Privacy Guarantees</h3>
-                    <div class="trust-indicators">
-                        <div class="trust-indicator">
-                            <div class="trust-indicator-icon" aria-hidden="true">🔒</div>
-                            <div class="trust-indicator-title">100% Offline</div>
-                            <div class="trust-indicator-desc">No internet required</div>
-                        </div>
-                        <div class="trust-indicator">
-                            <div class="trust-indicator-icon" aria-hidden="true">🚫</div>
-                            <div class="trust-indicator-title">No Logging</div>
-                            <div class="trust-indicator-desc">Nothing is saved</div>
-                        </div>
-                        <div class="trust-indicator">
-                            <div class="trust-indicator-icon" aria-hidden="true">🔐</div>
-                            <div class="trust-indicator-title">Crypto Secure</div>
-                            <div class="trust-indicator-desc">Web Crypto API</div>
-                        </div>
-                        <div class="trust-indicator">
-                            <div class="trust-indicator-icon" aria-hidden="true">👁️</div>
-                            <div class="trust-indicator-title">Open Source</div>
-                            <div class="trust-indicator-desc">Auditable code</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Why It Matters -->
-                <div class="trust-section">
-                    <h3>🎯 Why This Matters</h3>
-                    <p><strong>Most online password generators can:</strong></p>
-                    <ul>
-                        <li>Log your passwords on their servers</li>
-                        <li>Track your usage patterns</li>
-                        <li>Be compromised by hackers</li>
-                        <li>Sell your data to third parties</li>
-                        <li>Be monitored by your ISP or government</li>
-                    </ul>
-                    <p style="margin-top: 15px;"><strong>Unbreakable can't do any of that</strong> because it has no servers, makes no network requests, and runs entirely on your device.</p>
-                </div>
-
-                <!-- Technical Details -->
-                <div class="trust-section" style="border-top: 2px solid #eee; padding-top: 20px;">
-                    <h3>⚙️ How It Works</h3>
-                    <p style="font-family: monospace; background: #f5f7fa; padding: 15px; border-radius: 8px; font-size: 0.9rem; overflow-x: auto;">
-// Uses Web Crypto API with rejection sampling<br>
-window.crypto.getRandomValues(array);<br>
-// NOT Math.random() - that's predictable<br>
-// Eliminates modulo bias for true randomness
-                    </p>
-                    <p style="margin-top: 15px;">This ensures true randomness that cannot be predicted or replicated, with no statistical bias.</p>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
+</nav>
     <!-- Hero Section -->
-    <section class="hero">
+    <header class="hero">
         <div class="hero-content">
-            <div class="hero-icon" aria-hidden="true">🔐</div>
-            <h1>Unbreakable Password Generator</h1>
-            <p class="tagline">Most password generators can secretly log your passwords.<br>Unbreakable can't—verify it yourself in 30 seconds.</p>
-            <p class="subtitle">
-                100% offline operation with zero network requests.<br>
-                No servers. No logging. No trust required. Open your browser's dev tools and see for yourself.
+            <div class="hero-logo">
+                <h1 class="logo-name">JAMES BRYAN</h1>
+                <p class="logo-tagline">Database Analyst • SQL Developer</p>
+            </div>
+            <p class="subtitle">Database Analyst | SQL Developer | Healthcare IT Specialist</p>
+            <p class="tagline">15+ Years Database Expertise | EZ-CAP Systems | Healthcare Data Integration | <strong style="color: #00d4ff;">Available for Remote Roles</strong></p>
+            <div class="hero-buttons">
+                <a href="#" id="contactBtn" class="btn btn-primary" style="background: var(--white) !important; color: var(--primary-blue) !important; border-color: var(--white) !important;">
+                    <i class="fas fa-envelope"></i> Get In Touch
+                </a>
+                <a href="https://www.linkedin.com/in/janthonyb" target="_blank" class="btn btn-outline" style="font-size: 0.95rem; padding: 10px 24px;">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+			    <a href="/articles" class="btn btn-outline">
+                    <i class="fas fa-newspaper"></i> Articles
+                </a>	
+                <a href="https://github.com/jbryan79" target="_blank" class="btn btn-outline" style="font-size: 0.95rem; padding: 10px 24px;">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!-- Professional Summary Section -->
+    <section id="summary">
+        <div class="container">
+            <h2 class="section-title">Professional Summary</h2>
+            <div class="summary-content fade-in">
+                <p>
+                    Database and application support professional with <strong>15+ years of experience</strong> in healthcare IT operations. 
+                    Specialized in SQL development, database administration, and healthcare data systems including EZ-CAP, HEDIS measures, 
+                    and Medicaid claims processing. Currently expanding skillset into full-stack web development to complement database expertise.
+                </p>
+                <div class="summary-highlight">
+                    <p>
+                        <strong>Core Competencies:</strong> SQL Development • Database Administration • Healthcare Data Systems • 
+                        EZ-CAP/EDI • SSRS/SSIS • UAT Management • Vendor Coordination • Data Quality • Process Improvement • HIPAA Compliance
+                    </p>
+                    <p style="margin-top: 15px;">
+                        <strong>Currently seeking:</strong> Remote database analyst or SQL developer role in healthcare IT
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    
+    <!-- Why Hire Me Section -->
+    <section id="why-hire" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5f8d 100%); color: white;">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Why Hire Me?</h2>
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 40px;">
+                    <div style="text-align: center; padding: 30px; background: rgba(255,255,255,0.1); border-radius: 15px; backdrop-filter: blur(10px);">
+                        <div style="font-size: 3.5rem; font-weight: bold; margin-bottom: 10px;">15+</div>
+                        <div style="font-size: 1.1rem; opacity: 0.9;">Years in Healthcare IT</div>
+                    </div>
+                    <div style="text-align: center; padding: 30px; background: rgba(255,255,255,0.1); border-radius: 15px; backdrop-filter: blur(10px);">
+                        <div style="font-size: 3.5rem; font-weight: bold; margin-bottom: 10px;">100%</div>
+                        <div style="font-size: 1.1rem; opacity: 0.9;">EZ-CAP Expertise</div>
+                    </div>
+                    <div style="text-align: center; padding: 30px; background: rgba(255,255,255,0.1); border-radius: 15px; backdrop-filter: blur(10px);">
+                        <div style="font-size: 3.5rem; font-weight: bold; margin-bottom: 10px;">8</div>
+                        <div style="font-size: 1.1rem; opacity: 0.9;">Major Healthcare Orgs</div>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.15); padding: 30px; border-radius: 15px; border-left: 5px solid #4a9eff;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 15px;">🎯 What Sets Me Apart</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 10px 0; display: flex; align-items: start;">
+                            <span style="color: #4a9eff; margin-right: 10px; font-size: 1.5rem;">✓</span>
+                            <span><strong>Deep EZ-CAP Knowledge:</strong> 15+ years as Subject Matter Expert - I know this system inside and out</span>
+                        </li>
+                        <li style="padding: 10px 0; display: flex; align-items: start;">
+                            <span style="color: #4a9eff; margin-right: 10px; font-size: 1.5rem;">✓</span>
+                            <span><strong>Bridge Builder:</strong> Translate technical complexity into simple terms for stakeholders at all levels</span>
+                        </li>
+                        <li style="padding: 10px 0; display: flex; align-items: start;">
+                            <span style="color: #4a9eff; margin-right: 10px; font-size: 1.5rem;">✓</span>
+                            <span><strong>Problem Solver:</strong> Reduced incident resolution times while supporting thousands of daily patient records</span>
+                        </li>
+                        <li style="padding: 10px 0; display: flex; align-items: start;">
+                            <span style="color: #4a9eff; margin-right: 10px; font-size: 1.5rem;">✓</span>
+                            <span><strong>Collaborative:</strong> Proven track record working with offshore teams, vendors, and cross-functional departments</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+<!-- Technical Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid fade-in">
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Database & Development</h3>
+                    <ul>
+                        <li>SQL Server, T-SQL</li>
+                        <li>Stored Procedures</li>
+                        <li>Database Design</li>
+                        <li>Query Optimization</li>
+                        <li>Backup/Recovery</li>
+                        <li>Data Migration</li>
+                        <li>ETL Processes</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-line"></i> Reporting & BI Tools</h3>
+                    <ul>
+                        <li>SSRS (SQL Server Reporting Services)</li>
+                        <li>SSIS (SQL Server Integration Services)</li>
+                        <li>Crystal Reports</li>
+                        <li>Ad-hoc Reporting</li>
+                        <li>Data Warehousing</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-heartbeat"></i> Healthcare Applications</h3>
+                    <ul>
+                        <li>EZ-CAP (Subject Matter Expert)</li>
+                        <li>EDI Processing</li>
+                        <li>HEDIS Measures</li>
+                        <li>Medicaid Claims Systems</li>
+                        <li>PCG, DataWing, WebStrat</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Web Development</h3>
+                    <ul>
+                        <li>HTML5/CSS3</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>Node.js & Express</li>
+                        <li>MySQL/PlanetScale</li>
+                        <li>Responsive Design</li>
+                        <li>Netlify Deployment</li>
+                        <li>RESTful APIs</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Tools & Technologies</h3>
+                    <ul>
+                        <li>Microsoft SQL Server</li>
+                        <li>UAT Environment Management</li>
+                        <li>Microsoft Visio</li>
+                        <li>Git Version Control</li>
+                        <li>VS Code</li>
+                        <li>Postman</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-file-alt"></i> Documentation & Design</h3>
+                    <ul>
+                        <li>Microsoft Visio</li>
+                        <li>Adobe Creative Suite</li>
+                        <li>Technical Documentation</li>
+                        <li>Process Documentation</li>
+                        <li>Training Materials</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-users"></i> Additional Competencies</h3>
+                    <ul>
+                        <li>Vendor Management</li>
+                        <li>Incident Management</li>
+                        <li>User Training</li>
+                        <li>Cross-functional Collaboration</li>
+                        <li>HIPAA Compliance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Credentials Section -->
+    <section id="certifications" style="background: var(--white);">
+        <div class="container">
+            <h2 class="section-title">Certifications & Credentials</h2>
+            <div class="skills-grid" style="max-width: 900px;">
+                <div class="skill-category">
+                    <h3><i class="fas fa-certificate"></i> Healthcare IT Certifications</h3>
+                    <ul>
+                        <li>EZ-CAP 6X Certified</li>
+                        <li>EZ-CAP 5X Certified</li>
+                        <li>Data Elements Certified</li>
+                        <li>Crystal Reports Certified</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-shield-alt"></i> Compliance & Governance</h3>
+                    <ul>
+                        <li>HIPAA Compliant Data Management</li>
+                        <li>Healthcare Data Governance</li>
+                        <li>Protected Health Information (PHI) Handling</li>
+                        <li>Healthcare IT Security Best Practices</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-hospital"></i> Healthcare Systems Experience</h3>
+                    <ul>
+                        <li>EZ-CAP System Specialist (15+ years)</li>
+                        <li>Healthcare Database Architecture</li>
+                        <li>Clinical Data Integration</li>
+                        <li>Multi-Facility Data Coordination</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Recent Projects Section -->
+    <section id="projects" style="background: var(--gray-light);">
+        <div class="container">
+            <h2 class="section-title">Recent Projects</h2>
+            <p style="text-align: center; color: var(--gray-medium); margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Expanding my skillset by building full-stack web applications. Still learning, but enjoying the journey from database backend to complete web solutions.
             </p>
-            
-            <div class="trust-badges">
-                <div class="trust-badge">
-                    <span class="icon" aria-hidden="true">✓</span>
-                    <span>100% Offline</span>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto;">
+                
+                <!-- Project 1: Unbreakable Password Generator -->
+                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5f8d 100%); padding: 30px; color: white;">
+                        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                            <i class="fas fa-shield-alt" style="font-size: 2.5rem; color: #4a9eff;"></i>
+                            <h3 style="margin: 0; font-size: 1.5rem;">Unbreakable Password Generator</h3>
+                        </div>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">HTML5</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">CSS3</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">JavaScript</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">Crypto API</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">Offline-First</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">Open Source</span>
+                        </div>
+                    </div>
+                    <div style="padding: 25px;">
+                        <p style="color: var(--gray-medium); line-height: 1.6; margin-bottom: 15px;">
+                            Offline-first password generator built on zero-trust principles. Generates cryptographically secure passwords without ever touching the internet. 100% client-side JavaScript—no servers, no logging, no data collection.
+                        </p>
+                        <div style="background: #f0f8ff; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 3px solid #4a9eff;">
+                            <p style="font-size: 0.9rem; color: var(--gray-dark); margin: 0 0 8px 0; font-weight: 600;">
+                                <i class="fas fa-chart-line" style="color: #4a9eff;"></i> Impact
+                            </p>
+                            <p style="font-size: 0.9rem; color: var(--gray-medium); margin: 0;">
+                                Open-source project demonstrating security-first development and cryptographic implementation. Zero server dependencies ensure complete user privacy.
+                            </p>
+                        </div>
+                        <div style="border-top: 1px solid #eee; padding-top: 15px; margin-top: 15px;">
+                            <p style="font-size: 0.9rem; color: var(--gray-medium); margin: 0 0 10px 0;">
+                                <strong>Status:</strong> <span style="color: #4a9eff;">✓ Completed</span>
+                            </p>
+                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                <a href="https://github.com/jbryan79/Unbreakable" target="_blank" style="display: inline-flex; align-items: center; gap: 5px; padding: 8px 15px; background: var(--primary-blue); color: white; text-decoration: none; border-radius: 20px; font-size: 0.85rem; transition: background 0.3s ease;">
+                                    <i class="fab fa-github"></i> View Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="trust-badge">
-                    <span class="icon" aria-hidden="true">✓</span>
-                    <span>Zero Network Requests</span>
+
+                <!-- Project 2: This Portfolio Site -->
+                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5f8d 100%); padding: 30px; color: white;">
+                        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                            <i class="fas fa-user-circle" style="font-size: 2.5rem; color: #4a9eff;"></i>
+                            <h3 style="margin: 0; font-size: 1.5rem;">Portfolio Website</h3>
+                        </div>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">HTML5</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">CSS3</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">JavaScript</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">Responsive Design</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">Netlify</span>
+                        </div>
+                    </div>
+                    <div style="padding: 25px;">
+                        <p style="color: var(--gray-medium); line-height: 1.6; margin-bottom: 15px;">
+                            Custom-built portfolio site featuring responsive design, mobile-optimized navigation, and analytics integration. Built from scratch to showcase technical skills and professional experience.
+                        </p>
+                        <div style="background: #f0f8ff; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 3px solid #4a9eff;">
+                            <p style="font-size: 0.9rem; color: var(--gray-dark); margin: 0 0 8px 0; font-weight: 600;">
+                                <i class="fas fa-chart-line" style="color: #4a9eff;"></i> Impact
+                            </p>
+                            <p style="font-size: 0.9rem; color: var(--gray-medium); margin: 0;">
+                                Mobile-first design with strategic navigation improvements. Analytics-driven UX optimization to reduce bounce rates and improve recruiter engagement.
+                            </p>
+                        </div>
+                        <div style="border-top: 1px solid #eee; padding-top: 15px; margin-top: 15px;">
+                            <p style="font-size: 0.9rem; color: var(--gray-medium); margin: 0;">
+                                <strong>Status:</strong> <span style="color: #4a9eff;">✓ Live</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="trust-badge">
-                    <span class="icon" aria-hidden="true">✓</span>
-                    <span>Open Source</span>
+
+                <!-- Project 3: Compound Central Pharmacy -->
+                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                    <div style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5f8d 100%); padding: 30px; color: white;">
+                        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                            <i class="fas fa-pills" style="font-size: 2.5rem; color: #4a9eff;"></i>
+                            <h3 style="margin: 0; font-size: 1.5rem;">Compound Central Pharmacy</h3>
+                        </div>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">HTML5</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">CSS3</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">JavaScript</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">Mobile-First</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">Client Project</span>
+                        </div>
+                    </div>
+                    <div style="padding: 25px;">
+                        <p style="color: var(--gray-medium); line-height: 1.6; margin-bottom: 15px;">
+                            Mobile-responsive site for compounding pharmacy serving healthcare professionals and patients. Currently live and facilitating customer inquiries and prescription orders.
+                        </p>
+                        <div style="background: #f0f8ff; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 3px solid #4a9eff;">
+                            <p style="font-size: 0.9rem; color: var(--gray-dark); margin: 0 0 8px 0; font-weight: 600;">
+                                <i class="fas fa-chart-line" style="color: #4a9eff;"></i> Impact
+                            </p>
+                            <p style="font-size: 0.9rem; color: var(--gray-medium); margin: 0;">
+                                Delivered production-ready mobile experience for active healthcare business. Mobile-first approach ensuring accessibility for healthcare providers on-the-go.
+                            </p>
+                        </div>
+                        <div style="border-top: 1px solid #eee; padding-top: 15px; margin-top: 15px;">
+                            <p style="font-size: 0.9rem; color: var(--gray-medium); margin: 0;">
+                                <strong>Status:</strong> <span style="color: #4a9eff;">✓ Mobile Live</span> | <span style="color: #f39c12;">⚠ Desktop In Progress</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="trust-badge">
-                    <span class="icon" aria-hidden="true">✓</span>
-                    <span>No Data Collection</span>
+
+                <!-- Project 4: Peptide Sciences 101 -->
+                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                    <div style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5f8d 100%); padding: 30px; color: white;">
+                        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                            <i class="fas fa-flask" style="font-size: 2.5rem; color: #4a9eff;"></i>
+                            <h3 style="margin: 0; font-size: 1.5rem;">Peptide Sciences 101</h3>
+                        </div>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">HTML5</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">CSS3</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">Educational</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">Research Phase</span>
+                        </div>
+                    </div>
+                    <div style="padding: 25px;">
+                        <p style="color: var(--gray-medium); line-height: 1.6; margin-bottom: 15px;">
+                            Educational resource site about peptide research. Currently on hold while researching legal/regulatory compliance requirements for health-related content.
+                        </p>
+                        <div style="border-top: 1px solid #eee; padding-top: 15px; margin-top: 15px;">
+                            <p style="font-size: 0.9rem; color: var(--gray-medium); margin: 0;">
+                                <strong>Status:</strong> <span style="color: #e74c3c;">⏸ On Hold</span> (Legal Review)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="text-align: center; margin-top: 40px; padding: 30px; background: rgba(74, 158, 255, 0.1); border-radius: 15px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <p style="color: var(--gray-dark); margin: 0; line-height: 1.6;">
+                    <i class="fas fa-code" style="color: #4a9eff; margin-right: 8px;"></i>
+                    <strong>Learning in Public:</strong> I'm a database expert expanding into full-stack development. These projects represent real work as I build my web development skillset alongside my 15+ years of database expertise.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Professional Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-timeline fade-in">
+                
+                <!-- Current Role -->
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <p class="job-company">Freelance</p>
+                            <h3 class="job-title">Web Developer & Personal Trainer (Self-Employed)</h3>
+                            <p class="job-location">Orange County, CA (Remote)</p>
+                        </div>
+                        <div class="job-date">Aug 2025 - Present</div>
+                    </div>
+                    <ul>
+                        <li>Completed web development contracts building custom applications using Node.js, Express, MySQL (PlanetScale), HTML/CSS, and JavaScript</li>
+                        <li>Developed full-stack web applications with RESTful APIs, database integration, and responsive front-end designs deployed via Netlify</li>
+                        <li>Self-taught web developer applying database expertise to modern web technologies and cloud platforms</li>
+                        <li>Providing personal training services while maintaining and expanding technical skillset through freelance projects</li>
+                        <li>Currently completing SQL Fundamentals certification (Coursera) to refresh and formalize database skills</li>
+                    </ul>
+                </div>
+
+                <!-- AltaMed -->
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <p class="job-company">AltaMed Health Services / AlturaMSO</p>
+                            <h3 class="job-title">Sr. Database Analyst</h3>
+                            <p class="job-location">Los Angeles, CA (Hybrid)</p>
+                        </div>
+                        <div class="job-date">Mar 2020 - Jul 2025</div>
+                    </div>
+                    <ul>
+                        <li>Partnered with stakeholders across all organizational levels to evaluate, recommend, and implement technical solutions aligned with business objectives and healthcare compliance requirements</li>
+                        <li>Streamlined incident management workflows, reducing resolution times and minimizing downtime across critical healthcare applications supporting thousands of daily patient records</li>
+                        <li>Served as primary point of contact for external applications and databases integrated with EZ-CAP (PCG, DataWing, WebStrat); coordinated vendor communication for issue resolution, system patches, and upgrades</li>
+                        <li>Performed SQL Server monitoring, backup/recovery strategies, user security management, and database performance optimization</li>
+                        <li>Developed and enhanced SQL scripts, stored procedures, triggers, and jobs to support operational workflows and reporting requirements</li>
+                        <li>Created comprehensive technical documentation including process flows (Microsoft Visio), user guides, and standard operating procedures for EZ-CAP system and database workflows</li>
+                        <li>Led management and scheduling of all User Acceptance Testing (UAT) environments using SQL; ensured data integrity during each testing cycle</li>
+                        <li>Managed all EZ-CAP configuration, installations, patches, hotfixes, support, training, and version upgrades</li>
+                    </ul>
+                </div>
+
+                <!-- SCPMCS -->
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <p class="job-company">Southern California Physicians Managed Care Services</p>
+                            <h3 class="job-title">Sr. Database Administrator</h3>
+                            <p class="job-location">San Diego, CA</p>
+                        </div>
+                        <div class="job-date">Apr 2019 - Aug 2020</div>
+                    </div>
+                    <ul>
+                        <li>Managed database servers including SQL Server monitoring, backups, security, and script development</li>
+                        <li>Administered EZ-CAP/EDI system including configuration, patches, support, and training</li>
+                        <li>Created custom data load formats for third-party software integration</li>
+                        <li>Developed ad-hoc triggers, jobs, and stored procedures upon request</li>
+                    </ul>
+                </div>
+
+                <!-- AltaMed (earlier role) -->
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <p class="job-company">AltaMed Health Services</p>
+                            <h3 class="job-title">Analyst, Database Applications</h3>
+                            <p class="job-location">Monterey Park, CA</p>
+                        </div>
+                        <div class="job-date">Jun 2018 - Jun 2019</div>
+                    </div>
+                    <ul>
+                        <li>Collaborated with staff to evaluate, recommend, and analyze database solutions supporting business requirements</li>
+                        <li>Served as point of contact for third-party applications/databases integrated with EZ-CAP (PCG, DataWing, WebStrat); worked with vendors to troubleshoot issues and apply patches/updates</li>
+                        <li>Led maintenance and scheduling of UAT environments using SQL; ensured data integrity and proper refresh cycles</li>
+                        <li>Performed standard DBA tasks including SQL Server monitoring, backups, security, and script development</li>
+                    </ul>
+                </div>
+
+                <!-- Golden State -->
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <p class="job-company">Golden State Medicare Health Plan</p>
+                            <h3 class="job-title">PM Data & Analytics / Call Center Manager</h3>
+                            <p class="job-location">Seal Beach, CA</p>
+                        </div>
+                        <div class="job-date">Mar 2017 - Jun 2020</div>
+                    </div>
+                    <ul>
+                        <li>Managed all database servers including SQL Server monitoring, backups, security, and report generation</li>
+                        <li>Administered EZ-CAP/EDI system: configuration, installations, patches, hotfixes, support, training, and upgrades</li>
+                        <li>Served as one of two responsible for submitting all data for HEDIS measures (monthly and quarterly)</li>
+                        <li>Created custom data load formats for various third-party software applications</li>
+                        <li>Developed ad-hoc triggers, jobs, and stored procedures to support operational needs</li>
+                    </ul>
+                    <p style="font-style: italic; color: var(--gray-medium); margin-top: 10px; font-size: 0.9rem;">
+                        * Full-time Mar 2017 - Jun 2018; Consulting Jun 2018 - Jun 2020
+                    </p>
+                </div>
+
+                <!-- SynerMed -->
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <p class="job-company">SynerMed</p>
+                            <h3 class="job-title">Database Application Analyst</h3>
+                            <p class="job-location">Monterey Park, CA</p>
+                        </div>
+                        <div class="job-date">Mar 2015 - Jan 2017</div>
+                    </div>
+                    <ul>
+                        <li>Collaborated with cross-functional teams to evaluate database solutions and support third-party applications integrated with EZ-CAP</li>
+                        <li>Maintained and scheduled UAT environments; ensured data integrity and proper refresh cycles</li>
+                    </ul>
+                    <p style="font-style: italic; color: var(--gray-medium); margin-top: 10px; font-size: 0.9rem;">
+                        * Company closed operations in Jan 2017
+                    </p>
+                </div>
+
+                <!-- Citra Health -->
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <p class="job-company">Citra Health Solutions</p>
+                            <h3 class="job-title">Sr. Client Support</h3>
+                            <p class="job-location">Valencia, CA</p>
+                        </div>
+                        <div class="job-date">Oct 2012 - Mar 2015</div>
+                    </div>
+                    <ul>
+                        <li>Supported EZ-CAP application and integrated third-party applications including installations, database maintenance, and system configurations</li>
+                        <li>Provided customer training via WebEx and GoToMeeting; collaborated with overseas development team (Inteq Solutions, Hyderabad, India)</li>
+                        <li>Developed training materials and technical documentation to support knowledge transfer</li>
+                    </ul>
+                </div>
+
+                <!-- Orange Health -->
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <p class="job-company">Orange Health Solution</p>
+                            <h3 class="job-title">Sr. Client Support</h3>
+                            <p class="job-location">Valencia, CA</p>
+                        </div>
+                        <div class="job-date">Jan 2011 - Oct 2012</div>
+                    </div>
+                    <ul>
+                        <li>Provided technical support for EZ-CAP and integrated healthcare applications; managed client communications and troubleshooting</li>
+                        <li>Supported database maintenance, system configurations, and training documentation</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Contact Section -->
+    
+    <!-- Testimonials / Recommendations Section -->
+    <section id="testimonials" style="background: var(--gray-light);">
+        <div class="container">
+            <h2 class="section-title">What Colleagues Say</h2>
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                    
+                    <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border-left: 4px solid #4a9eff;">
+                        <div style="color: #4a9eff; font-size: 3rem; line-height: 1; margin-bottom: 5px;">"</div>
+                        <p style="color: var(--gray-medium); font-style: italic; margin-bottom: 20px; line-height: 1.7;">
+                            James has an incredible ability to break down complex EZ-CAP issues and explain them clearly. His expertise saved us countless hours and prevented major production incidents.
+                        </p>
+                        <div style="color: #4a9eff; font-size: 3rem; line-height: 1; text-align: right; margin-top: -20px; margin-bottom: 15px;">"</div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #2c5f8d, #4a9eff); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.2rem;">
+                                TM
+                            </div>
+                            <div>
+                                <div style="font-weight: bold; color: var(--dark-blue);">Tech Manager</div>
+                                <div style="font-size: 0.9rem; color: var(--gray-medium);">Healthcare Organization</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border-left: 4px solid #4a9eff;">
+                        <div style="color: #4a9eff; font-size: 3rem; line-height: 1; margin-bottom: 5px;">"</div>
+                        <p style="color: var(--gray-medium); font-style: italic; margin-bottom: 20px; line-height: 1.7;">
+                            Working with James on database integration projects was seamless. He communicates effectively with both technical and non-technical stakeholders.
+                        </p>
+                        <div style="color: #4a9eff; font-size: 3rem; line-height: 1; text-align: right; margin-top: -20px; margin-bottom: 15px;">"</div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #2c5f8d, #4a9eff); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.2rem;">
+                                PM
+                            </div>
+                            <div>
+                                <div style="font-weight: bold; color: var(--dark-blue);">Project Manager</div>
+                                <div style="font-size: 0.9rem; color: var(--gray-medium);">Managed Care Services</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border-left: 4px solid #4a9eff;">
+                        <div style="color: #4a9eff; font-size: 3rem; line-height: 1; margin-bottom: 5px;">"</div>
+                        <p style="color: var(--gray-medium); font-style: italic; margin-bottom: 20px; line-height: 1.7;">
+                            James is the go-to person for EZ-CAP questions. His documentation and training materials made onboarding our team much smoother.
+                        </p>
+                        <div style="color: #4a9eff; font-size: 3rem; line-height: 1; text-align: right; margin-top: -20px; margin-bottom: 15px;">"</div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #2c5f8d, #4a9eff); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.2rem;">
+                                DL
+                            </div>
+                            <div>
+                                <div style="font-weight: bold; color: var(--dark-blue);">Department Lead</div>
+                                <div style="font-size: 0.9rem; color: var(--gray-medium);">Health Plan</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border-left: 4px solid #4a9eff;">
+                        <div style="color: #4a9eff; font-size: 3rem; line-height: 1; margin-bottom: 5px;">"</div>
+                        <p style="color: var(--gray-medium); font-style: italic; margin-bottom: 20px; line-height: 1.7;">
+                            I highly recommend James. Exceptional customer service, technical and a good team player.
+                        </p>
+                        <div style="color: #4a9eff; font-size: 3rem; line-height: 1; text-align: right; margin-top: -20px; margin-bottom: 15px;">"</div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #2c5f8d, #4a9eff); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.2rem;">
+                                VP
+                            </div>
+                            <div>
+                                <div style="font-weight: bold; color: var(--dark-blue);">Vice President of Analytics</div>
+                                <div style="font-size: 0.9rem; color: var(--gray-medium);">AltaMed Health Services</div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Password Generator Section -->
-    <section class="generator-section">
-        <div class="generator-header">
-            <h2>Generate Your Password</h2>
-            <p>Cryptographically secure. Runs entirely on your device.</p>
-        </div>
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-envelope"></i> Get In Touch</h2>
+                <p>Interested in discussing opportunities? I'd love to hear from you!</p>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form class="contact-form" name="contact" method="POST" action="/thank-you.html" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contact">
+                    
+                    <p style="display: none;">
+                        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                    </p>
 
-        <div class="password-display">
-            <div id="passwordOutput" class="password-output empty" role="status" aria-live="polite" aria-atomic="true">Click "Generate Password" to begin</div>
-            <div class="entropy-display" id="entropyDisplay" style="display: none;">
-                <strong id="entropyValue">0</strong> bits of entropy | 
-                <span id="crackTime">Calculating...</span>
-            </div>
-        </div>
+                    <div class="form-group">
+                        <label for="modal-name">Name *</label>
+                        <input type="text" id="modal-name" name="name" required>
+                    </div>
 
-        <div class="controls">
-            <div class="control-group">
-                <label for="passwordLength">Password Length:</label>
-                <input type="range" id="passwordLength" min="8" max="64" value="16" step="1" aria-describedby="passwordLengthNum">
-                <input type="number" id="passwordLengthNum" min="8" max="64" value="16" aria-label="Password length in characters">
-            </div>
-        </div>
+                    <div class="form-group">
+                        <label for="modal-email">Email *</label>
+                        <input type="email" id="modal-email" name="email" required>
+                    </div>
 
-        <div class="checkbox-group" id="checkboxGroup">
-            <div class="checkbox-item">
-                <input type="checkbox" id="includeUppercase" checked aria-describedby="uppercaseDesc">
-                <label for="includeUppercase">Uppercase (A-Z)</label>
-                <span id="uppercaseDesc" class="sr-only">Include uppercase letters from A to Z</span>
-            </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="includeLowercase" checked aria-describedby="lowercaseDesc">
-                <label for="includeLowercase">Lowercase (a-z)</label>
-                <span id="lowercaseDesc" class="sr-only">Include lowercase letters from a to z</span>
-            </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="includeNumbers" checked aria-describedby="numbersDesc">
-                <label for="includeNumbers">Numbers (0-9)</label>
-                <span id="numbersDesc" class="sr-only">Include numbers from 0 to 9</span>
-            </div>
-            <div class="checkbox-item">
-                <input type="checkbox" id="includeSymbols" checked aria-describedby="symbolsDesc">
-                <label for="includeSymbols">Symbols (!@#$%)</label>
-                <span id="symbolsDesc" class="sr-only">Include special symbols</span>
+                    <div class="form-group">
+                        <label for="modal-subject">Subject *</label>
+                        <input type="text" id="modal-subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modal-message">Message *</label>
+                        <textarea id="modal-message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
             </div>
         </div>
-
-        <div class="action-buttons">
-            <button class="btn btn-primary" id="generateBtn">
-                <span class="icon" aria-hidden="true">⚡</span>
-                Generate Password
-            </button>
-            <button class="btn btn-success" id="copyBtn" disabled>
-                <span class="icon" aria-hidden="true">📋</span>
-                Copy to Clipboard
-            </button>
-        </div>
-    </section>
-
-    <!-- Copy Notification -->
-    <div class="copy-notification" id="copyNotification" role="alert" aria-live="assertive">
-        ✓ Password copied to clipboard!
     </div>
 
-    <!-- Privacy Proof Section -->
-    <section class="privacy-proof">
-        <div class="container">
-            <h2>Proof of Privacy</h2>
-            <p>Don't trust us. Verify for yourself that your passwords never leave your device.</p>
-            
-            <div class="proof-steps">
-                <div class="proof-step">
-                    <div class="proof-step-number" aria-hidden="true">1</div>
-                    <h3>Open Dev Tools</h3>
-                    <p>Press F12 on your keyboard to open browser developer tools</p>
-                </div>
-                <div class="proof-step">
-                    <div class="proof-step-number" aria-hidden="true">2</div>
-                    <h3>Go to Network Tab</h3>
-                    <p>Click on the "Network" tab in developer tools</p>
-                </div>
-                <div class="proof-step">
-                    <div class="proof-step-number" aria-hidden="true">3</div>
-                    <h3>Generate Passwords</h3>
-                    <p>Generate 10, 50, or 100 passwords</p>
-                </div>
-                <div class="proof-step">
-                    <div class="proof-step-number" aria-hidden="true">4</div>
-                    <h3>See Zero Requests</h3>
-                    <p>Verify there are ZERO network requests. Ever.</p>
-                </div>
-            </div>
-
-            <div class="network-status">
-                <span class="icon" aria-hidden="true">🔒</span>
-                Network Status: OFFLINE | Zero Requests Made
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2>Why Choose Unbreakable?</h2>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon" aria-hidden="true">🔐</div>
-                    <h3>Privacy First</h3>
-                    <p>100% offline operation. No servers, no logging, no data collection. Your passwords are generated on your device and stay on your device.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon" aria-hidden="true">🎯</div>
-                    <h3>Cryptographically Secure</h3>
-                    <p>Uses Web Crypto API with rejection sampling to eliminate modulo bias. Not Math.random() which is predictable. Your passwords are truly unbreakable.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon" aria-hidden="true">⚡</div>
-                    <h3>Fast & Simple</h3>
-                    <p>Instant password generation. No installation required. Works in any modern browser. Clean, distraction-free interface.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon" aria-hidden="true">🔓</div>
-                    <h3>Open Source</h3>
-                    <p>Fully auditable code. No hidden dependencies. MIT License. Trust through transparency and verification.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon" aria-hidden="true">📱</div>
-                    <h3>Works Everywhere</h3>
-                    <p>Desktop, mobile, tablet. Windows, Mac, Linux. Run from USB. Air-gapped systems. Anywhere you need secure passwords.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon" aria-hidden="true">🛡️</div>
-                    <h3>Zero Trust</h3>
-                    <p>Don't trust online generators. With Unbreakable, you don't have to trust us either. Verify everything yourself.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Developer Section -->
-    <section class="about-developer">
-        <div class="container">
-            <h2>About This Project</h2>
-            <p>
-                Built by <strong>James Bryan</strong>, a database analyst with 15+ years in healthcare IT, 
-                transitioning to full-stack development. This project demonstrates security-first architecture, 
-                clean accessible UI/UX, and complete technical documentation & distribution pipeline.
+    <!-- Final CTA Section -->
+    <section style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5f8d 100%); padding: 60px 20px; text-align: center; color: white;">
+        <div class="container" style="max-width: 800px;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px; font-weight: 700;">Ready to Strengthen Your Healthcare IT Team?</h2>
+            <p style="font-size: 1.2rem; opacity: 0.95; margin-bottom: 30px; line-height: 1.6;">
+                Looking for a database analyst with 15+ years of healthcare IT experience, EZ-CAP expertise, and a proven track record across multiple major healthcare organizations?
             </p>
-            
-            <div class="about-highlights">
-                <div class="about-highlight">Security-Conscious Design</div>
-                <div class="about-highlight">Privacy by Architecture</div>
-                <div class="about-highlight">Full-Stack Capabilities</div>
-            </div>
-
-            <div class="about-links">
-                <a href="https://jamesabryan.com" class="btn btn-primary" target="_blank">
-                    <span class="icon">🌐</span>
-                    View Portfolio
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#" id="contactBtnFooter" class="btn" style="background: var(--white) !important; color: var(--primary-blue) !important; border: 2px solid var(--white); padding: 15px 35px; font-size: 1.1rem; border-radius: 30px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; font-weight: 600; transition: all 0.3s ease;">
+                    <i class="fas fa-envelope"></i> Let's Connect
                 </a>
-                <a href="https://linkedin.com/in/janthonyb" class="btn btn-outline" target="_blank">
-                    <span class="icon">💼</span>
-                    Connect on LinkedIn
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Download Section -->
-    <section class="download-section">
-        <div class="container">
-            <h2>Get Unbreakable</h2>
-            <p>Download for desktop or use right here in your browser. Your choice.</p>
-            
-            <div class="download-options">
-                <a href="https://github.com/jbryan79/Unbreakable/releases" class="download-btn" target="_blank" rel="noopener noreferrer">
-                    <span class="icon" aria-hidden="true">💾</span>
-                    Download for Windows
-                </a>
-                <a href="https://github.com/jbryan79/Unbreakable" class="download-btn" target="_blank" rel="noopener noreferrer">
-                    <span class="icon" aria-hidden="true">📂</span>
-                    View on GitHub
+                <a href="James_Bryan_Resume_20251103.pdf" class="btn btn-outline" download style="padding: 15px 35px; font-size: 1.1rem; border: 2px solid var(--white);">
+                    <i class="fas fa-download"></i> Download Resume
                 </a>
             </div>
         </div>
@@ -1339,329 +1876,233 @@ window.crypto.getRandomValues(array);<br>
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-links">
-                <a href="https://github.com/jbryan79/Unbreakable" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://github.com/jbryan79/Unbreakable/issues" target="_blank" rel="noopener noreferrer">Report Bug</a>
-                <a href="https://github.com/jbryan79/Unbreakable/issues" target="_blank" rel="noopener noreferrer">Request Feature</a>
-                <a href="https://jamesabryan.com" target="_blank" rel="noopener noreferrer">Portfolio</a>
+            <div class="footer-card">
+                <!-- Left Side - LinkedIn Card -->
+                <div class="footer-left">
+                    <div class="footer-name">James Bryan</div>
+                    <div class="footer-title">Database Analyst & SQL Developer</div>
+                    
+                    <!-- Custom LinkedIn Card -->
+                    <div class="custom-linkedin-card">
+                        <div class="linkedin-card-header">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </div>
+                        <div class="linkedin-card-body">
+                            <img src="/linkedin-profile.jpg" alt="James Bryan" class="linkedin-profile-pic">
+                            <div class="linkedin-card-info">
+                                <div class="linkedin-card-name">James Bryan</div>
+                                <div class="linkedin-card-title">Database Analyst | SQL Developer | Healthcare IT Specialist | EZ-CAP SME | #OpenToWork | Remote</div>
+                                <div class="linkedin-card-school">ITT Technical Institute</div>
+                                <a href="https://www.linkedin.com/in/janthonyb" target="_blank" class="linkedin-view-profile">
+                                    View profile
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side - Contact Details -->
+                <div class="footer-right">
+                    <a href="mailto:jamesbryan@gmail.com" class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>jamesbryan@gmail.com</span>
+                    </a>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Cypress, California</span>
+                    </div>
+                    <a href="https://www.linkedin.com/in/janthonyb" target="_blank" class="footer-contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>linkedin.com/in/janthonyb</span>
+                    </a>
+                </div>
             </div>
-            <p>&copy; 2025 James Bryan. MIT License. Built with privacy in mind.</p>
-            <p style="margin-top: 10px; opacity: 0.8;">
-                <strong>Privacy Promise:</strong> No servers • No logging • No analytics • No tracking • No data collection
-            </p>
+
+            <div class="footer-copyright">
+                &copy; 2025 James Bryan. All rights reserved.
+            </div>
         </div>
     </footer>
 
     <script>
-        // Password Generation Logic with Rejection Sampling (eliminates modulo bias)
-        const generateBtn = document.getElementById('generateBtn');
-        const copyBtn = document.getElementById('copyBtn');
-        const passwordOutput = document.getElementById('passwordOutput');
-        const passwordLength = document.getElementById('passwordLength');
-        const passwordLengthNum = document.getElementById('passwordLengthNum');
-        const includeUppercase = document.getElementById('includeUppercase');
-        const includeLowercase = document.getElementById('includeLowercase');
-        const includeNumbers = document.getElementById('includeNumbers');
-        const includeSymbols = document.getElementById('includeSymbols');
-        const entropyDisplay = document.getElementById('entropyDisplay');
-        const entropyValue = document.getElementById('entropyValue');
-        const crackTime = document.getElementById('crackTime');
-        const copyNotification = document.getElementById('copyNotification');
-        const checkboxGroup = document.getElementById('checkboxGroup');
-
-        // Sync slider and number input
-        passwordLength.addEventListener('input', (e) => {
-            passwordLengthNum.value = e.target.value;
-        });
-
-        passwordLengthNum.addEventListener('input', (e) => {
-            passwordLength.value = e.target.value;
-        });
-
-        // Character sets
-        const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        const lowercase = 'abcdefghijklmnopqrstuvwxyz';
-        const numbers = '0123456789';
-        const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?';
-
-        // Validate character selection
-        function validateCharsetSelection() {
-            const anyChecked = includeUppercase.checked || 
-                               includeLowercase.checked || 
-                               includeNumbers.checked || 
-                               includeSymbols.checked;
-            
-            if (!anyChecked) {
-                checkboxGroup.classList.add('error');
-                return false;
+        // Function to scroll to experience section
+        function scrollToExperience() {
+            const experienceSection = document.getElementById('experience');
+            if (experienceSection) {
+                experienceSection.scrollIntoView({ behavior: 'smooth' });
             }
-            
-            checkboxGroup.classList.remove('error');
-            return true;
         }
 
-        // Remove error state when user checks a box
-        [includeUppercase, includeLowercase, includeNumbers, includeSymbols].forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                if (checkbox.checked) {
-                    checkboxGroup.classList.remove('error');
+        // Handle jump button visibility
+        const jumpButton = document.getElementById('jumpButton');
+        const experienceSection = document.getElementById('experience');
+
+        window.addEventListener('scroll', function() {
+            if (experienceSection) {
+                const rect = experienceSection.getBoundingClientRect();
+                const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
+                
+                if (isVisible || window.pageYOffset >= rect.top) {
+                    jumpButton.classList.add('hidden');
+                } else {
+                    jumpButton.classList.remove('hidden');
+                }
+            }
+        });
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
                 }
             });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-category, .job').forEach(el => {
+            observer.observe(el);
         });
 
-        // Generate cryptographically secure password with rejection sampling
-        function generatePassword() {
-            const length = parseInt(passwordLength.value);
-            let charset = '';
-
-            if (includeUppercase.checked) charset += uppercase;
-            if (includeLowercase.checked) charset += lowercase;
-            if (includeNumbers.checked) charset += numbers;
-            if (includeSymbols.checked) charset += symbols;
-
-            if (charset.length === 0) {
-                return null;
-            }
-
-            // Use rejection sampling to eliminate modulo bias
-            let password = '';
-            const maxValid = Math.floor(256 / charset.length) * charset.length;
-            
-            for (let i = 0; i < length; i++) {
-                let randomValue;
-                do {
-                    const randomArray = new Uint8Array(1);
-                    window.crypto.getRandomValues(randomArray);
-                    randomValue = randomArray[0];
-                } while (randomValue >= maxValid); // Reject biased values
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
                 
-                password += charset[randomValue % charset.length];
-            }
-
-            return password;
-        }
-
-        // Calculate entropy and crack time (worst-case, not average)
-        function calculateEntropy(password, charsetSize) {
-            const length = password.length;
-            const entropy = length * Math.log2(charsetSize);
-            
-            // Assume 100 billion attempts per second (modern GPUs)
-            const attemptsPerSecond = 100e9;
-            const totalCombinations = Math.pow(charsetSize, length);
-            const secondsToCrack = totalCombinations / attemptsPerSecond; // Worst case, not average
-            
-            return {
-                entropy: Math.round(entropy),
-                time: formatCrackTime(secondsToCrack)
-            };
-        }
-
-        function formatCrackTime(seconds) {
-            const minute = 60;
-            const hour = minute * 60;
-            const day = hour * 24;
-            const year = day * 365.25;
-            const millennium = year * 1000;
-            const million_years = year * 1e6;
-            const billion_years = year * 1e9;
-            const trillion_years = year * 1e12;
-
-            if (seconds < minute) return 'Instant';
-            if (seconds < hour) return `${Math.round(seconds / minute)} minutes`;
-            if (seconds < day) return `${Math.round(seconds / hour)} hours`;
-            if (seconds < year) return `${Math.round(seconds / day)} days`;
-            if (seconds < millennium) return `${Math.round(seconds / year)} years`;
-            if (seconds < million_years) return `${Math.round(seconds / millennium)} thousand years`;
-            if (seconds < billion_years) return `${(seconds / million_years).toFixed(1)} million years`;
-            if (seconds < trillion_years) return `${(seconds / billion_years).toFixed(1)} billion years`;
-            return `${(seconds / trillion_years).toFixed(1)} trillion years`;
-        }
-
-        // Generate button click
-        generateBtn.addEventListener('click', () => {
-            if (!validateCharsetSelection()) {
-                alert('Please select at least one character type!');
-                return;
-            }
-
-            const password = generatePassword();
-            
-            if (password) {
-                passwordOutput.textContent = password;
-                passwordOutput.classList.remove('empty');
-                copyBtn.disabled = false;
-
-                // Calculate charset size
-                let charsetSize = 0;
-                if (includeUppercase.checked) charsetSize += 26;
-                if (includeLowercase.checked) charsetSize += 26;
-                if (includeNumbers.checked) charsetSize += 10;
-                if (includeSymbols.checked) charsetSize += 32;
-
-                const stats = calculateEntropy(password, charsetSize);
-                entropyValue.textContent = stats.entropy;
-                crackTime.textContent = `Would take ${stats.time} to crack`;
-                entropyDisplay.style.display = 'block';
-            }
-        });
-
-        // Copy button click
-        copyBtn.addEventListener('click', async () => {
-            const password = passwordOutput.textContent;
-            
-            try {
-                await navigator.clipboard.writeText(password);
+                // Skip modal trigger
+                if (href === '#' || this.id === 'contactBtn' || this.id === 'contactBtnFooter') {
+                    return;
+                }
                 
-                // Show notification
-                copyNotification.classList.add('show');
-                setTimeout(() => {
-                    copyNotification.classList.remove('show');
-                }, 2000);
-            } catch (err) {
-                // Fallback for older browsers
-                const textArea = document.createElement('textarea');
-                textArea.value = password;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                
-                copyNotification.classList.add('show');
-                setTimeout(() => {
-                    copyNotification.classList.remove('show');
-                }, 2000);
-            }
-        });
-
-        // Keyboard shortcut: Ctrl/Cmd + G to generate
-        document.addEventListener('keydown', (e) => {
-            if ((e.ctrlKey || e.metaKey) && e.key === 'g') {
                 e.preventDefault();
-                generateBtn.click();
-            }
-        });
-
-        // Auto-generate on page load
-        window.addEventListener('load', () => {
-            generateBtn.click();
-        });
-
-        // Trust Badge Component Logic
-        (function() {
-            'use strict';
-
-            // Elements
-            const trustBadgeFixed = document.getElementById('trustBadgeFixed');
-            const trustModal = document.getElementById('trustModal');
-            const closeModal = document.getElementById('closeModal');
-            const requestCounterFixed = document.getElementById('requestCounterFixed');
-            const modalRequestCounter = document.getElementById('modalRequestCounter');
-
-            // Network request counter
-            let networkRequestCount = 0;
-
-            // Monitor network requests using Performance API
-            function monitorNetworkRequests() {
-                const perfEntries = performance.getEntriesByType('resource');
-                
-                // Filter out only actual network requests (not data URIs, blobs, etc.)
-                // Exclude the initial navigation (page load)
-                const actualRequests = perfEntries.filter(entry => {
-                    return (entry.name.startsWith('http://') || entry.name.startsWith('https://')) &&
-                           entry.initiatorType !== 'navigation';
-                });
-
-                networkRequestCount = actualRequests.length;
-                
-                // Update displays
-                requestCounterFixed.textContent = `${networkRequestCount} Request${networkRequestCount !== 1 ? 's' : ''}`;
-                modalRequestCounter.textContent = networkRequestCount;
-                
-                // Update badge color based on requests
-                if (networkRequestCount > 0) {
-                    trustBadgeFixed.style.background = 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)';
-                    trustBadgeFixed.style.boxShadow = '0 4px 15px rgba(231, 76, 60, 0.4)';
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
-            }
+            });
+        });
 
-            // Initial check
-            monitorNetworkRequests();
+        // Contact Modal Functionality
+        const modal = document.getElementById('contactModal');
+        const contactBtn = document.getElementById('contactBtn');
+        const contactBtnFooter = document.getElementById('contactBtnFooter');
+        const closeBtn = document.querySelector('.close');
 
-            // Monitor every 2 seconds
-            setInterval(monitorNetworkRequests, 2000);
+        // Open modal from hero button
+        contactBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            this.blur(); // Remove focus immediately
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
 
-            // Open modal on badge click
-            function openTrustModal() {
-                trustModal.classList.add('active');
+        // Open modal from footer button
+        if (contactBtnFooter) {
+            contactBtnFooter.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.blur();
+                modal.classList.add('show');
                 document.body.style.overflow = 'hidden';
-                monitorNetworkRequests(); // Update count when opening
-                trapFocus(document.querySelector('.trust-modal-content'));
-                closeModal.focus(); // Set initial focus to close button
-            }
-
-            trustBadgeFixed.addEventListener('click', openTrustModal);
-            
-            // Allow keyboard activation of trust badge
-            trustBadgeFixed.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    openTrustModal();
-                }
             });
+        }
 
-            // Close modal
-            function closeTrustModal() {
-                trustModal.classList.remove('active');
+        // Close modal when clicking X
+        closeBtn.addEventListener('click', function() {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('show');
                 document.body.style.overflow = 'auto';
-                trustBadgeFixed.focus(); // Return focus to badge
             }
+        });
 
-            closeModal.addEventListener('click', closeTrustModal);
-
-            // Close on outside click
-            trustModal.addEventListener('click', (e) => {
-                if (e.target === trustModal) {
-                    closeTrustModal();
-                }
-            });
-
-            // Close on ESC key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && trustModal.classList.contains('active')) {
-                    closeTrustModal();
-                }
-            });
-
-            // Trap focus within modal for accessibility
-            function trapFocus(element) {
-                const focusableElements = element.querySelectorAll(
-                    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-                );
-                const firstElement = focusableElements[0];
-                const lastElement = focusableElements[focusableElements.length - 1];
-
-                element.addEventListener('keydown', (e) => {
-                    if (e.key === 'Tab') {
-                        if (e.shiftKey && document.activeElement === firstElement) {
-                            lastElement.focus();
-                            e.preventDefault();
-                        } else if (!e.shiftKey && document.activeElement === lastElement) {
-                            firstElement.focus();
-                            e.preventDefault();
-                        }
-                    }
-                });
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
             }
+        });
 
-            // Log to console for extra verification
-            console.log('%c🔒 UNBREAKABLE PRIVACY CHECK', 'background: #27ae60; color: white; font-size: 16px; padding: 10px; font-weight: bold;');
-            console.log('%cThis password generator makes ZERO network requests after page load.', 'font-size: 14px; color: #27ae60;');
-            console.log('%cYou can verify this by checking the Network tab in DevTools.', 'font-size: 12px; color: #666;');
-            console.log('%cAll password generation happens on YOUR device only.', 'font-size: 12px; color: #666;');
-            console.log('%cUsing rejection sampling to eliminate modulo bias.', 'font-size: 12px; color: #666;');
-            
-        })();
+        // Back to Top Button - Show/Hide on scroll
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 100) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+
+// ===== STICKY NAV AND HAMBURGER MENU =====
+const stickyNav = document.getElementById('stickyNav');
+const heroSection = document.querySelector('.hero');
+
+if (stickyNav && heroSection) {
+    window.addEventListener('scroll', () => {
+        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+        
+        // Show sticky nav once user scrolls past hero section
+        if (window.scrollY > heroBottom - 100) {
+            stickyNav.classList.remove('hidden');
+        } else {
+            stickyNav.classList.add('hidden');
+        }
+    });
+}
+
+// Hamburger menu toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // Close mobile menu when link is clicked
+    const navLinkItems = document.querySelectorAll('.sticky-nav-links a');
+    navLinkItems.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+}
+
     </script>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SS5MSFXDVW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SS5MSFXDVW');
+</script>
+<button class="jump-to-experience" id="jumpButton" onclick="scrollToExperience()">
+    <i class="fas fa-briefcase"></i> View Experience
+</button>
 </body>
 </html>
