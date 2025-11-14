@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Unbreakable Password Generator",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "100% offline, cryptographically secure password generation. Zero network requests. Zero trust required.",
   
   "permissions": [
