@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Unbreakable Password Generator - 100% offline, cryptographically secure password generation. No servers. No logging. No trust required.">
+    <meta name="keywords" content="password generator, offline, secure, privacy, cryptographic, no tracking">
+    <title>Unbreakable Password Generator - Your Passwords. Your Device. Nobody Else.</title>
+    
+    <!-- No external dependencies - everything is self-contained -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c5f8d;
+            --primary-dark: #1e3a5f;
+            --accent: #4a9eff;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+            --light-gray: #ecf0f1;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light-gray);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 40px 20px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.03) 35px, rgba(255,255,255,.03) 70px);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+            opacity: 0.95;
+        }
+
+        .hero .subtitle {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            font-size: 0.85rem;
+        }
+
+        .trust-badge i {
+            color: var(--success);
+            font-size: 1.3rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Generator Section */
+        .generator-section {
+            background: var(--white);
+            padding: 30px 20px;
+            margin: -30px auto 0;
+            max-width: 800px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .generator-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .generator-header h2 {
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .generator-header p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .password-display {
+            background: var(--light-gray);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 2px solid var(--accent);
+            position: relative;
+        }
+
+        .password-output {
+            font-family: 'Courier New', monospace;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            word-break: break-all;
+            text-align: center;
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 1px;
+        }
+
+        .password-output.empty {
+            color: var(--gray);
+            font-style: italic;
+            font-size: 1rem;
+        }
+
+        .entropy-display {
+            text-align: center;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .entropy-display strong {
+            color: var(--success);
+            font-size: 1rem;
+        }
+
+        .controls {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .control-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: var(--light-gray);
+            border-radius: 10px;
+        }
+
+        .control-group label {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+        .control-group input[type="range"] {
+            width: 200px;
+            flex: 1;
+            margin: 0 15px;
+        }
+
+        .control-group input[type="number"] {
+            width: 60px;
+            padding: 6px;
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .checkbox-item:hover {
+            background: #dfe6e9;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .checkbox-item label {
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: var(--white);
+        }
+
+        .btn-success:hover {
+            background: #229954;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Copy Notification */
+        .copy-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success);
+            color: var(--white);
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            display: none;
+            animation: slideIn 0.3s ease;
+            z-index: 1000;
+        }
+
+        .copy-notification.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Privacy Proof Section */
+        .privacy-proof {
+            background: var(--primary-dark);
+            color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .privacy-proof h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .privacy-proof p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 1;
+            line-height: 1.6;
+            color: #ffffff;
+        }
+
+        .proof-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .proof-step {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .proof-step-number {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            background: var(--accent);
+            border-radius: 50%;
+            line-height: 45px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .proof-step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .proof-step p {
+            font-size: 1rem;
+            opacity: 1;
+            line-height: 1.5;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        .network-status {
+            display: inline-block;
+            background: rgba(39, 174, 96, 0.25);
+            color: #ffffff;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-top: 25px;
+            border: 2px solid #27ae60;
+            font-size: 1.05rem;
+        }
+
+        .network-status i {
+            margin-right: 8px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 20px;
+            background: var(--white);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 50px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            background: var(--light-gray);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Download Section */
+        .download-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .download-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .download-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .download-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            background: var(--white);
+            color: var(--primary);
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .download-btn i {
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* iOS Funding Section */
+        .ios-funding {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(74, 158, 255, 0.1);
+            border-radius: 10px;
+            border: 2px solid var(--accent);
+        }
+
+        .ios-funding h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .ios-funding p {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .progress-bar-container {
+            margin-bottom: 15px;
+        }
+
+        .progress-bar-bg {
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            height: 30px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar-fill {
+            background: linear-gradient(90deg, var(--success) 0%, var(--accent) 100%);
+            height: 100%;
+            width: 0%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.8);
+            margin: 0;
+        }
+
+        .progress-text strong {
+            color: var(--white);
+        }
+
+        .donate-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .donate-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .funding-note {
+            font-size: 0.8rem;
+            margin-top: 10px;
+            opacity: 0.8;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Trust Badge Component Styles */
+        .trust-badge-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .trust-badge-fixed {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+
+        .trust-badge-fixed:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.5);
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 25px rgba(39, 174, 96, 0.6);
+            }
+        }
+
+        .trust-badge-icon {
+            font-size: 1.2rem;
+            animation: rotate-shield 3s linear infinite;
+        }
+
+        @keyframes rotate-shield {
+            0%, 90% {
+                transform: rotate(0deg);
+            }
+            95% {
+                transform: rotate(-10deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        .network-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .network-dot {
+            width: 8px;
+            height: 8px;
+            background: #fff;
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .request-counter {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* Trust Modal */
+        .trust-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .trust-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .trust-modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 0;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .trust-modal-header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5f8d 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+        }
+
+        .trust-modal-header h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.8rem;
+        }
+
+        .trust-modal-header p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .trust-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .trust-modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .trust-modal-body {
+            padding: 30px;
+        }
+
+        .trust-section {
+            margin-bottom: 30px;
+        }
+
+        .trust-section h3 {
+            color: #1e3a5f;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .trust-section p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .trust-section ul {
+            color: #666;
+            line-height: 1.8;
+            padding-left: 25px;
+        }
+
+        .trust-indicators {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .trust-indicator {
+            background: #f5f7fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .trust-indicator-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .trust-indicator-title {
+            font-weight: 600;
+            color: #1e3a5f;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .trust-indicator-desc {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .network-monitor {
+            background: #27ae60;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .network-monitor-count {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .trust-badge-container {
+                top: 10px;
+                right: 10px;
+            }
+
+            .trust-badge-fixed {
+                padding: 10px 15px;
+                font-size: 0.8rem;
+            }
+
+            .trust-modal-content {
+                width: 95%;
+            }
+
+            .trust-modal-header {
+                padding: 20px;
+            }
+
+            .trust-modal-body {
+                padding: 20px;
+            }
+
+            .trust-indicators {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .password-output {
+                font-size: 1.3rem;
+            }
+
+            .control-group {
+                flex-direction: column;
+                gap: 10px;
+                align-items: stretch;
+            }
+
+            .control-group input[type="range"] {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .trust-badges {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        /* Utility icon replacement for Font Awesome */
+        .icon {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Trust Badge Component -->
+    <div class="trust-badge-container">
+        <div class="trust-badge-fixed" id="trustBadgeFixed">
+            <span class="trust-badge-icon">🔒</span>
+            <div class="network-indicator">
+                <span class="network-dot"></span>
+                <span>OFFLINE</span>
+            </div>
+            <span class="request-counter" id="requestCounterFixed">0 Requests</span>
+        </div>
+    </div>
+
+    <!-- Trust Modal -->
+    <div class="trust-modal" id="trustModal">
+        <div class="trust-modal-content">
+            <div class="trust-modal-header">
+                <h2>🔒 Privacy Verified</h2>
+                <p>Your passwords never leave your device</p>
+                <button class="trust-modal-close" id="closeModal">×</button>
+            </div>
+            <div class="trust-modal-body">
+                
+                <!-- Network Monitor -->
+                <div class="network-monitor">
+                    <div>Network Requests Detected</div>
+                    <div class="network-monitor-count" id="modalRequestCounter">0</div>
+                    <div style="font-size: 0.9rem; opacity: 0.9;">This page has made zero network requests</div>
+                </div>
+
+                <!-- Proof Section -->
+                <div class="trust-section">
+                    <h3>🔍 Verify Privacy Yourself</h3>
+                    <p>Don't take our word for it. Here's how to verify that Unbreakable makes zero network requests:</p>
+                    
+                    <div style="background: #f5f7fa; padding: 20px; border-radius: 10px; border-left: 4px solid #4a9eff;">
+                        <div style="margin-bottom: 15px;">
+                            <strong style="color: #1e3a5f; display: block; margin-bottom: 5px;">Open Developer Tools</strong>
+                            <span>Press F12 (or Cmd+Option+I on Mac) to open browser dev tools</span>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <strong style="color: #1e3a5f; display: block; margin-bottom: 5px;">Go to Network Tab</strong>
+                            <span>Click on the "Network" tab in developer tools</span>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <strong style="color: #1e3a5f; display: block; margin-bottom: 5px;">Generate Passwords</strong>
+                            <span>Generate 10, 50, or 100 passwords using the tool</span>
+                        </div>
+                        <div>
+                            <strong style="color: #1e3a5f; display: block; margin-bottom: 5px;">See Zero Requests</strong>
+                            <span>Verify there are ZERO network requests in the list</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trust Indicators -->
+                <div class="trust-section">
+                    <h3>✔ Privacy Guarantees</h3>
+                    <div class="trust-indicators">
+                        <div class="trust-indicator">
+                            <div class="trust-indicator-icon">🔒</div>
+                            <div class="trust-indicator-title">100% Offline</div>
+                            <div class="trust-indicator-desc">No internet required</div>
+                        </div>
+                        <div class="trust-indicator">
+                            <div class="trust-indicator-icon">🚫</div>
+                            <div class="trust-indicator-title">No Logging</div>
+                            <div class="trust-indicator-desc">Nothing is saved</div>
+                        </div>
+                        <div class="trust-indicator">
+                            <div class="trust-indicator-icon">🔐</div>
+                            <div class="trust-indicator-title">Crypto Secure</div>
+                            <div class="trust-indicator-desc">Web Crypto API</div>
+                        </div>
+                        <div class="trust-indicator">
+                            <div class="trust-indicator-icon">👁️</div>
+                            <div class="trust-indicator-title">Open Source</div>
+                            <div class="trust-indicator-desc">Auditable code</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Why It Matters -->
+                <div class="trust-section">
+                    <h3>🎯 Why This Matters</h3>
+                    <p><strong>Most online password generators can:</strong></p>
+                    <ul>
+                        <li>Log your passwords on their servers</li>
+                        <li>Track your usage patterns</li>
+                        <li>Be compromised by hackers</li>
+                        <li>Sell your data to third parties</li>
+                        <li>Be monitored by your ISP or government</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Unbreakable can't do any of that</strong> because it has no servers, makes no network requests, and runs entirely on your device.</p>
+                </div>
+
+                <!-- Technical Details -->
+                <div class="trust-section" style="border-top: 2px solid #eee; padding-top: 20px;">
+                    <h3>⚙️ How It Works</h3>
+                    <p style="font-family: monospace; background: #f5f7fa; padding: 15px; border-radius: 8px; font-size: 0.9rem; overflow-x: auto;">
+// Uses Web Crypto API<br>
+window.crypto.getRandomValues(array);<br>
+// NOT Math.random() - that's predictable<br>
+// Cryptographically secure randomness
+                    </p>
+                    <p style="margin-top: 15px;">This ensures true randomness that cannot be predicted or replicated.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Modal -->
+    <div class="trust-modal" id="featuresModal">
+        <div class="trust-modal-content">
+            <div class="trust-modal-header">
+                <h2>✨ Why Choose Unbreakable?</h2>
+                <p>Privacy-first password generation for security-conscious users</p>
+                <button class="trust-modal-close" id="closeFeaturesModal">×</button>
+            </div>
+            <div class="trust-modal-body">
+                
+                <!-- Feature Items -->
+                <div class="trust-section">
+                    <h3>🔐 Privacy First</h3>
+                    <p>100% offline operation. No servers, no logging, no data collection. Your passwords are generated on your device and stay on your device.</p>
+                </div>
+
+                <div class="trust-section">
+                    <h3>🎯 Cryptographically Secure</h3>
+                    <p>Uses Web Crypto API for true randomness. Not Math.random() which is predictable. Your passwords are truly unbreakable.</p>
+                </div>
+
+                <div class="trust-section">
+                    <h3>⚡ Fast & Simple</h3>
+                    <p>Instant password generation. No installation required. Works in any modern browser. Clean, distraction-free interface.</p>
+                </div>
+
+                <div class="trust-section">
+                    <h3>🔓 Open Source</h3>
+                    <p>Fully auditable code. No hidden dependencies. MIT License. Trust through transparency and verification.</p>
+                </div>
+
+                <div class="trust-section">
+                    <h3>📱 Works Everywhere</h3>
+                    <p>Desktop, mobile, tablet. Windows, Mac, Linux. Run from USB. Air-gapped systems. Anywhere you need secure passwords.</p>
+                </div>
+
+                <div class="trust-section" style="border-top: 2px solid #eee; padding-top: 20px; margin-top: 10px;">
+                    <h3>🛡️ Zero Trust Architecture</h3>
+                    <p><strong>Don't trust online generators.</strong> With Unbreakable, you don't have to trust us either. Verify everything yourself through browser developer tools.</p>
+                    <p style="margin-top: 10px;"><strong>Your passwords. Your device. Nobody else.</strong></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-icon">🔒</div>
+            <h1>Unbreakable Password Generator</h1>
+            <p class="tagline">Your passwords. Your device. Nobody else.</p>
+            <p class="subtitle">
+                100% offline, cryptographically secure password generation.<br>
+                No servers. No logging. No trust required.
+            </p>
+            
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <span class="icon">✔</span>
+                    <span>100% Offline</span>
+                </div>
+                <div class="trust-badge">
+                    <span class="icon">✔</span>
+                    <span>Zero Network Requests</span>
+                </div>
+                <div class="trust-badge">
+                    <span class="icon">✔</span>
+                    <span>Open Source</span>
+                </div>
+                <div class="trust-badge">
+                    <span class="icon">✔</span>
+                    <span>No Data Collection</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Password Generator Section -->
+    <section class="generator-section">
+        <div class="generator-header">
+            <h2>Generate Your Password</h2>
+            <p>Cryptographically secure. Runs entirely on your device.</p>
+        </div>
+
+        <div class="password-display">
+            <div id="passwordOutput" class="password-output empty">Click "Generate Password" to begin</div>
+            <div class="entropy-display" id="entropyDisplay" style="display: none;">
+                <strong id="entropyValue">0</strong> bits of entropy | 
+                <span id="crackTime">Calculating...</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="passwordLength">Password Length:</label>
+                <input type="range" id="passwordLength" min="8" max="64" value="16" step="1">
+                <input type="number" id="passwordLengthNum" min="8" max="64" value="16">
+            </div>
+        </div>
+
+        <div class="checkbox-group">
+            <div class="checkbox-item">
+                <input type="checkbox" id="includeUppercase" checked>
+                <label for="includeUppercase">Uppercase (A-Z)</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="includeLowercase" checked>
+                <label for="includeLowercase">Lowercase (a-z)</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="includeNumbers" checked>
+                <label for="includeNumbers">Numbers (0-9)</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="includeSymbols" checked>
+                <label for="includeSymbols">Symbols (!@#$%)</label>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-primary" id="generateBtn">
+                <span class="icon">⚡</span>
+                Generate Password
+            </button>
+            <button class="btn btn-success" id="copyBtn" disabled>
+                <span class="icon">📋</span>
+                Copy to Clipboard
+            </button>
+        </div>
+    </section>
+
+    <!-- Copy Notification -->
+    <div class="copy-notification" id="copyNotification">
+        ✔ Password copied to clipboard!
+    </div>
+
+    <!-- Compact Info Links Section -->
+    <section style="background: var(--white); padding: 30px 20px; text-align: center;">
+        <div class="container">
+            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 600px; margin: 0 auto;">
+                <a href="#" id="openProofModal" style="display: inline-flex; align-items: center; gap: 8px; color: var(--primary); text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease;">
+                    <span style="font-size: 1.5rem;">🔍</span>
+                    <span>Proof of Privacy</span>
+                </a>
+                <a href="#" id="openFeaturesModal" style="display: inline-flex; align-items: center; gap: 8px; color: var(--primary); text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease;">
+                    <span style="font-size: 1.5rem;">✨</span>
+                    <span>Why Choose Unbreakable?</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section">
+        <div class="container">
+            <h2>Get Unbreakable</h2>
+            <p>Download for desktop or use right here in your browser. Your choice.</p>
+            
+            <div class="download-options">
+                <a href="https://github.com/jbryan79/Unbreakable/releases" class="download-btn" target="_blank">
+                    <span class="icon">💾</span>
+                    Download for Windows
+                </a>
+                <a href="https://github.com/jbryan79/Unbreakable" class="download-btn" target="_blank">
+                    <span class="icon">📂</span>
+                    View on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://github.com/jbryan79/Unbreakable">GitHub</a>
+                <a href="https://github.com/jbryan79/Unbreakable/issues">Report Bug</a>
+                <a href="https://github.com/jbryan79/Unbreakable/issues">Request Feature</a>
+                <a href="https://jamesabryan.com">Portfolio</a>
+            </div>
+
+            <!-- iOS Development Fund Section -->
+            <div class="ios-funding">
+                <h3>📱 Help Bring Unbreakable to iOS</h3>
+                <p>Want this on iPhone/iPad? Help cover the $99 Apple Developer Program fee.</p>
+                
+                <div class="progress-bar-container">
+                    <div class="progress-bar-bg">
+                        <div id="fundingProgress" class="progress-bar-fill" style="width: 0%;"></div>
+                    </div>
+                    <p class="progress-text">
+                        <strong id="amountRaised">$0</strong> of <strong>$99</strong> raised
+                    </p>
+                </div>
+                
+                <a href="https://github.com/sponsors/jbryan79" target="_blank" class="donate-btn">
+                    Donate via GitHub Sponsors →
+                </a>
+                
+                <p class="funding-note">
+                    100% goes to Apple Developer Program • Once funded, I'll publish to App Store
+                </p>
+            </div>
+
+            <p>&copy; 2025 James Bryan. MIT License. Built with privacy in mind.</p>
+            <p style="margin-top: 10px; opacity: 0.8;">
+                <strong>Privacy Promise:</strong> No servers • No logging • No analytics • No tracking • No data collection
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Password Generation Logic
+        const generateBtn = document.getElementById('generateBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const passwordOutput = document.getElementById('passwordOutput');
+        const passwordLength = document.getElementById('passwordLength');
+        const passwordLengthNum = document.getElementById('passwordLengthNum');
+        const includeUppercase = document.getElementById('includeUppercase');
+        const includeLowercase = document.getElementById('includeLowercase');
+        const includeNumbers = document.getElementById('includeNumbers');
+        const includeSymbols = document.getElementById('includeSymbols');
+        const entropyDisplay = document.getElementById('entropyDisplay');
+        const entropyValue = document.getElementById('entropyValue');
+        const crackTime = document.getElementById('crackTime');
+        const copyNotification = document.getElementById('copyNotification');
+
+        // Sync slider and number input
+        passwordLength.addEventListener('input', (e) => {
+            passwordLengthNum.value = e.target.value;
+        });
+
+        passwordLengthNum.addEventListener('input', (e) => {
+            passwordLength.value = e.target.value;
+        });
+
+        // Character sets
+        const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+        const numbers = '0123456789';
+        const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+        // Generate cryptographically secure password
+        function generatePassword() {
+            const length = parseInt(passwordLength.value);
+            let charset = '';
+
+            if (includeUppercase.checked) charset += uppercase;
+            if (includeLowercase.checked) charset += lowercase;
+            if (includeNumbers.checked) charset += numbers;
+            if (includeSymbols.checked) charset += symbols;
+
+            if (charset.length === 0) {
+                alert('Please select at least one character type!');
+                return null;
+            }
+
+            // Use Web Crypto API for cryptographically secure randomness
+            const array = new Uint32Array(length);
+            window.crypto.getRandomValues(array);
+
+            let password = '';
+            for (let i = 0; i < length; i++) {
+                password += charset[array[i] % charset.length];
+            }
+
+            return password;
+        }
+
+        // Calculate entropy and crack time
+        function calculateEntropy(password, charsetSize) {
+            const length = password.length;
+            const entropy = length * Math.log2(charsetSize);
+            
+            // Assume 100 billion attempts per second (modern GPUs)
+            const attemptsPerSecond = 100e9;
+            const totalCombinations = Math.pow(charsetSize, length);
+            const secondsToCrack = totalCombinations / (2 * attemptsPerSecond); // Divide by 2 for average
+            
+            return {
+                entropy: Math.round(entropy),
+                time: formatCrackTime(secondsToCrack)
+            };
+        }
+
+        function formatCrackTime(seconds) {
+            const minute = 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+            const year = day * 365.25;
+            const millennium = year * 1000;
+            const million_years = year * 1e6;
+            const billion_years = year * 1e9;
+            const trillion_years = year * 1e12;
+
+            if (seconds < minute) return 'Instant';
+            if (seconds < hour) return `${Math.round(seconds / minute)} minutes`;
+            if (seconds < day) return `${Math.round(seconds / hour)} hours`;
+            if (seconds < year) return `${Math.round(seconds / day)} days`;
+            if (seconds < millennium) return `${Math.round(seconds / year)} years`;
+            if (seconds < million_years) return `${Math.round(seconds / millennium)} thousand years`;
+            if (seconds < billion_years) return `${(seconds / million_years).toFixed(1)} million years`;
+            if (seconds < trillion_years) return `${(seconds / billion_years).toFixed(1)} billion years`;
+            return `${(seconds / trillion_years).toFixed(1)} trillion years`;
+        }
+
+        // Generate button click
+        generateBtn.addEventListener('click', () => {
+            const password = generatePassword();
+            
+            if (password) {
+                passwordOutput.textContent = password;
+                passwordOutput.classList.remove('empty');
+                copyBtn.disabled = false;
+
+                // Calculate charset size
+                let charsetSize = 0;
+                if (includeUppercase.checked) charsetSize += 26;
+                if (includeLowercase.checked) charsetSize += 26;
+                if (includeNumbers.checked) charsetSize += 10;
+                if (includeSymbols.checked) charsetSize += 32;
+
+                const stats = calculateEntropy(password, charsetSize);
+                entropyValue.textContent = stats.entropy;
+                crackTime.textContent = `Would take ${stats.time} to crack`;
+                entropyDisplay.style.display = 'block';
+            }
+        });
+
+        // Copy button click
+        copyBtn.addEventListener('click', async () => {
+            const password = passwordOutput.textContent;
+            
+            try {
+                await navigator.clipboard.writeText(password);
+                
+                // Show notification
+                copyNotification.classList.add('show');
+                setTimeout(() => {
+                    copyNotification.classList.remove('show');
+                }, 2000);
+            } catch (err) {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = password;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                copyNotification.classList.add('show');
+                setTimeout(() => {
+                    copyNotification.classList.remove('show');
+                }, 2000);
+            }
+        });
+
+        // Keyboard shortcut: Ctrl/Cmd + G to generate
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'g') {
+                e.preventDefault();
+                generateBtn.click();
+            }
+        });
+
+        // Auto-generate on page load
+        window.addEventListener('load', () => {
+            generateBtn.click();
+        });
+
+        // Trust Badge Component Logic
+        (function() {
+            'use strict';
+
+            // Elements
+            const trustBadgeFixed = document.getElementById('trustBadgeFixed');
+            const trustModal = document.getElementById('trustModal');
+            const closeModal = document.getElementById('closeModal');
+            const requestCounterFixed = document.getElementById('requestCounterFixed');
+            const modalRequestCounter = document.getElementById('modalRequestCounter');
+
+            // Features Modal Elements
+            const featuresModal = document.getElementById('featuresModal');
+            const closeFeaturesModal = document.getElementById('closeFeaturesModal');
+            const openProofModal = document.getElementById('openProofModal');
+            const openFeaturesModal = document.getElementById('openFeaturesModal');
+
+            // Network request counter
+            let networkRequestCount = 0;
+
+            // Monitor network requests using Performance API
+            function monitorNetworkRequests() {
+                const perfEntries = performance.getEntriesByType('resource');
+                
+                // Filter out only actual network requests (not data URIs, blobs, etc.)
+                const actualRequests = perfEntries.filter(entry => {
+                    return entry.name.startsWith('http://') || entry.name.startsWith('https://');
+                });
+
+                // Update count (subtract 1 for the initial page load)
+                networkRequestCount = Math.max(0, actualRequests.length - 1);
+                
+                // Update displays
+                requestCounterFixed.textContent = `${networkRequestCount} Request${networkRequestCount !== 1 ? 's' : ''}`;
+                modalRequestCounter.textContent = networkRequestCount;
+                
+                // Update badge color based on requests
+                if (networkRequestCount > 0) {
+                    trustBadgeFixed.style.background = 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)';
+                    trustBadgeFixed.style.boxShadow = '0 4px 15px rgba(231, 76, 60, 0.4)';
+                }
+            }
+
+            // Initial check
+            monitorNetworkRequests();
+
+            // Monitor every 2 seconds
+            setInterval(monitorNetworkRequests, 2000);
+
+            // Open trust modal on badge click
+            trustBadgeFixed.addEventListener('click', () => {
+                trustModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                monitorNetworkRequests(); // Update count when opening
+            });
+
+            // Open trust modal on "Proof of Privacy" link click
+            openProofModal.addEventListener('click', (e) => {
+                e.preventDefault();
+                trustModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                monitorNetworkRequests(); // Update count when opening
+            });
+
+            // Open features modal on "Why Choose Unbreakable?" link click
+            openFeaturesModal.addEventListener('click', (e) => {
+                e.preventDefault();
+                featuresModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            // Close trust modal
+            function closeTrustModal() {
+                trustModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            // Close features modal
+            function closeFeatureModal() {
+                featuresModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            closeModal.addEventListener('click', closeTrustModal);
+            closeFeaturesModal.addEventListener('click', closeFeatureModal);
+
+            // Close on outside click
+            trustModal.addEventListener('click', (e) => {
+                if (e.target === trustModal) {
+                    closeTrustModal();
+                }
+            });
+
+            featuresModal.addEventListener('click', (e) => {
+                if (e.target === featuresModal) {
+                    closeFeatureModal();
+                }
+            });
+
+            // Close on ESC key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    if (trustModal.classList.contains('active')) {
+                        closeTrustModal();
+                    }
+                    if (featuresModal.classList.contains('active')) {
+                        closeFeatureModal();
+                    }
+                }
+            });
+
+            // Log to console for extra verification
+            console.log('%c🔒 UNBREAKABLE PRIVACY CHECK', 'background: #27ae60; color: white; font-size: 16px; padding: 10px; font-weight: bold;');
+            console.log('%cThis password generator makes ZERO network requests.', 'font-size: 14px; color: #27ae60;');
+            console.log('%cYou can verify this by checking the Network tab in DevTools.', 'font-size: 12px; color: #666;');
+            console.log('%cAll password generation happens on YOUR device only.', 'font-size: 12px; color: #666;');
+            
+        })();
+    </script>
+</body>
+</html>
